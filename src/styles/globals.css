@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.defaultLink{
+    @apply relative 
+    before:[content:""] before:opacity-0 before:absolute before:bottom-0 before:w-full before:h-[1px] before:block before:left-0 before:bg-white ease-in-out duration-150 hover:ease-in-out before:duration-200;
+}
+.defaultLink::before{
+    clip-path: inset(0 50% 0 50%);
+}
+.defaultLink:hover::before{
+    clip-path: inset(0 0 0 0);
+    opacity:1;
+}
