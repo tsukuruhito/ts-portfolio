@@ -7,12 +7,12 @@ import Skills from '../src/components/Skills'
 const Home: NextPage = () => {
   return (
     <Layout title="Ts Portfolio" isHeader={true} isFooter={true}>
-      <div className="hero lg:min-h-screen bg-[#242933]">
+      <div className="hero lg:min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className='relative w-full h-60 lg:h-screen'>
             <Image src="/top_photo-2.webp" alt="" layout='fill' objectFit='cover' objectPosition="center" className='max-w-sm rounded-lg shadow-2xl' priority/>
           </div>
-          <div className='font-mono tracking-tight'>
+          <div className='font-mono tracking-tight '>
             <h1 className="text-5xl font-bold">Frontend and Design</h1>
             <div className="py-6">
               <p>This is my portofolio page. I&apos;m beginner but I have high motivation to study and create. So I&apos;ll continue to update my skills and portofolio.</p>
@@ -20,12 +20,12 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className='bg-[#242933]'>
+      <div className='bg-base-200'>
         <div className='flex flex-row-reverse px-4 py-16 max-w-3xl mx-auto box-border'>
             <div className='relative w-full h-60'>
               <Image src="/scene03.webp" alt="" layout='fill' objectFit='cover' objectPosition="center" className='max-w-sm rounded-lg shadow-2xl'/>
             </div>
-            <div className='font-mono tracking-tight relative -mr-40 mix-blend-screen text-left mt-20 w-full font-semibold text-lg text-blue-200'>
+            <div className='font-mono tracking-tight relative -mr-40 mix-blend-screen text-left mt-20 w-full font-semibold text-lg '>
               <h2 className="text-5xl font-bold whitespace-pre-wrap">About</h2>
               <dl className="py-6">
                 <dt className='text-2xl mb-2'>Tsukuruhito</dt>
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
             <div className='relative w-full h-60'>
               <Image src="/scene02.webp" alt="" layout='fill' objectFit='cover' objectPosition="right" className='max-w-sm rounded-lg shadow-2xl' priority/>
             </div>
-            <div className='font-mono tracking-tight relative -ml-40 mix-blend-screen text-right mt-10 font-semibold w-full text-lg text-blue-200'>
+            <div className='font-mono tracking-tight relative -ml-40 mix-blend-screen text-right mt-10 font-semibold w-full text-lg '>
               <h2 className="text-5xl font-bold whitespace-pre-wrap">Works</h2>
               <div className="py-6">
                 <p>portfolio of work I have now is a little bit.</p>
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
             </div>
           </div>
       </div>
-      <div className='bg-[#242933] text-blue-200'>
+      <div className='bg-base-200'>
         <div className='px-4 py-16 max-w-3xl mx-auto box-border'>
           <h2 className="text-5xl font-bold whitespace-pre-wrap">Skills</h2>
           <Skills/>
