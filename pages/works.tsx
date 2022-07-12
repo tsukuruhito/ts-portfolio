@@ -99,7 +99,6 @@ const works = () => {
                   <div className="card-body">
                     <h2 className="card-title">{design.title}</h2>
                     <p>{design.description}</p>
-                    <p>{design.auth}</p>
                     <div className="card-actions justify-end">
                       <a
                         className="btn btn-primary"
