@@ -1,110 +1,161 @@
+import { motion } from "framer-motion";
+import { useAtom } from "jotai";
 import type { NextPage } from "next";
-import Image from "next/image";
+import Image from "next/future/image";
 import Link from "next/link";
+import { useInView } from "react-intersection-observer";
+import { sceneAtom } from "../src/atom";
+import Kv from "../src/components/Kv";
 import Layout from "../src/components/Layout/Layout";
 import Skills from "../src/components/Skills";
 
 const Home: NextPage = () => {
+  const { ref, inView } = useInView({
+    initialInView: false,
+    threshold: 0.1,
+  });
+
+  const [scene] = useAtom(sceneAtom);
   return (
-    <Layout title="Ts Portfolio" isHeader={true} isFooter={true}>
-      <div className="bg-gradient-to-b from-[#305071] via-cyan-700 to-[#f3beb6] dark:from-[#0f111c] dark:via-[#233367] dark:to-[#2b476d] text-zinc-50 dark:text-zinc-300">
-        <div className="hero lg:min-h-screen">
-          <div className="hero-content flex-col lg:flex-row-reverse">
-            <div className="relative w-full h-60 lg:h-screen">
-              <Image
-                src="/top_photo-2.webp"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-                className="max-w-sm rounded-lg shadow-2xl"
-                priority
-              />
-            </div>
-            <div className="font-mono tracking-tight ">
-              <h1 className="text-5xl font-bold">Frontend and Design</h1>
-              <div className="py-6 leading-8">
-                <p>
-                  This is my portofolio page. I&apos;m beginner but I have high
-                  motivation to study and create. So I&apos;ll continue to
-                  update my skills and portofolio.
+    <>
+      <Layout
+        title="Ts Portfolio"
+        isHeader={true}
+        isFooter={true}
+        inView={inView}
+      >
+        <motion.div
+          className="relative overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={!scene && { opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <Kv />
+          <div ref={ref} className="py-8">
+            <section
+              className="
+                    px-4 md:px-8 tracking-wide relative text-left max-w-5xl mx-auto box-border w-full font-semibold text-lg text-zinc-600 dark:text-white z-10
+                  "
+            >
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 2, ease: [0.6, 0.05, -0.01, 0.9] }}
+                viewport={{ margin: "-150px", once: true }}
+              >
+                <h2 className="section_title before:content-['About']">
+                  About
+                </h2>
+                <h3 className="text-2xl my-2 font-rodin">
+                  つく
+                  <span className="text-sm">
+                    &#91;フロントエンドエンジニア&#93;
+                  </span>
+                </h3>
+                <p className="font-rodin text-sm">
+                  はじまったばかりのクリエイターとしての生活を日々丁寧にコツコツと過ごしています。
                 </p>
+                <div className="flex mx-auto items-center md:items-stretch justify-start flex-col md:flex-row my-8 gap-4 ">
+                  <div className="metricsBox bg-zinc-400/30 before:border-zinc-400 before:-top-2 before:-left-2 ">
+                    <dl>
+                      <dt className="uppercase text-2xl mb-2 border-b-2 border-zinc-400 dark:border-white inline-block">
+                        job
+                      </dt>
+                      <dd>フロントエンド/1.5Years</dd>
+                      <dd className="my-2 text-sm">
+                        <p>コーディング業務を中心に行っています。</p>
+                        <p className="mt-2">
+                          メインコーダーとして動きやギミックを中心に作っています。
+                        </p>
+                      </dd>
+                    </dl>
+                  </div>
+                  <div className="metricsBox bg-stone-400/30 before:border-stone-400 before:-bottom-2 before:-right-2">
+                    <dl>
+                      <dt className="uppercase text-2xl mb-2 border-b-2 border-zinc-400 dark:border-white inline-block">
+                        like
+                      </dt>
+                      <dd>
+                        <ul className='after:content-["etc."]'>
+                          <li className="inline-block mr-2">Web制作</li>
+                          <li className="inline-block mr-2">デザイン</li>
+                          <li className="inline-block mr-2">
+                            モーショングラフィックス
+                          </li>
+                          <li className="inline-block mr-2">写真</li>
+                        </ul>
+                      </dd>
+                      <dd className="my-2 text-sm">
+                        <p>
+                          クリエイティブなことへの関心が高く、日々勉強しています。
+                        </p>
+                        <p className="mt-2">
+                          やりたいことが多すぎて手が回らないのが最近の悩み。
+                        </p>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </motion.div>
+            </section>
+            <section
+              className="
+                    px-4 md:px-8 tracking-wide text-right relative max-w-5xl mx-auto mt-24 w-full text-lg font-semibold text-zinc-600 dark:text-white
+                    box-border
+                  "
+            >
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 2, ease: [0.6, 0.05, -0.01, 0.9] }}
+                viewport={{ margin: "-150px", once: true }}
+              >
+                <h2 className="section_title before:content-['Works']">
+                  Works
+                </h2>
+                <div className="my-8 ">
+                  <Image
+                    src="/works.jpg"
+                    alt="works"
+                    width={700}
+                    height={500}
+                    className="
+                          w-4/5 h-1/3 md:h-auto md:w-auto sm:ml-auto mr-12 sm:mr-32
+                          max-w-lg object-cover object-center
+                        "
+                  />
+                  <div
+                    className="
+                          w-5/6 ml-auto md:w-auto text-sm
+                          metricsBox bg-zinc-400/80 before:border-zinc-400 before:-top-2 before:-left-2
+                          -mt-8
+                        "
+                  >
+                    <p>これまで制作物を掲載しています。</p>
+                    <p>これから随時作品を追加していきます。</p>
+                    <Link href="/works">
+                      <a className="uppercase defaultLink py-2 mt-2 inline-block relative">
+                        view page
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            </section>
+            <section className="mt-24 px-4 md:px-8 tracking-wide relative text-left max-w-5xl mx-auto box-border w-full font-semibold text-lg text-zinc-600 dark:text-white z-10">
+              <div>
+                <div className="box-border">
+                  <h2 className="section_title before:content-['Skills']">
+                    Skills
+                  </h2>
+                  <Skills />
+                </div>
               </div>
-            </div>
+            </section>
           </div>
-        </div>
-        <div>
-          <div className="flex flex-row-reverse px-4 py-16 max-w-3xl mx-auto box-border">
-            <div className="relative w-full h-60">
-              <Image
-                src="/scene03.webp"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-                className="max-w-sm rounded-lg shadow-2xl"
-              />
-            </div>
-            <div className="font-mono tracking-tight relative -mr-40 text-left mt-20 w-full font-semibold text-lg ">
-              <h2 className="text-5xl font-bold whitespace-pre-wrap">About</h2>
-              <dl className="py-6 drop-shadow-xl shadow-slate-900">
-                <dt className="text-2xl mb-2">Tsukuruhito</dt>
-                <dd className='before:content-["job:"] before:uppercase'>
-                  Front-end enginieer/1.5years
-                </dd>
-                <dd className='before:content-["like:"] before:uppercase'>
-                  frontend,design,photo
-                </dd>
-              </dl>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="flex flex-row px-4 py-16 max-w-3xl mx-auto box-border">
-            <div className="relative w-full h-60">
-              <Image
-                src="/scene02.webp"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-                objectPosition="right"
-                className="max-w-sm rounded-lg shadow-2xl"
-                priority
-              />
-            </div>
-            <div className="font-mono tracking-tight relative -ml-40 text-right mt-10 w-full text-lg font-semibold ">
-              <h2 className="text-5xl font-bold whitespace-pre-wrap">Works</h2>
-              <div className="py-6 drop-shadow-xl shadow-slate-900">
-                <p>portfolio of work I have now is a little bit.</p>
-                <p>
-                  I plan to add more in the future, so please look forward to
-                  it!
-                </p>
-                <Link href="/works">
-                  <a className="uppercase defaultLink py-2 mt-4 inline-block">
-                    view page
-                    <Image
-                      src="/arrow.svg"
-                      alt="arrow"
-                      width={40}
-                      height={10}
-                      objectFit="contain"
-                      objectPosition="right"
-                    />
-                  </a>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="px-4 py-16 font-mono max-w-3xl mx-auto box-border">
-            <h2 className="text-5xl font-bold whitespace-pre-wrap">Skills</h2>
-            <Skills />
-          </div>
-        </div>
-      </div>
-    </Layout>
+        </motion.div>
+      </Layout>
+    </>
   );
 };
 

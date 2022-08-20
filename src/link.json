@@ -1,0 +1,34 @@
+{
+  "tech": [
+    {
+      "id": 1,
+      "title": "Stream clocks",
+      "description": "配信用の時計オーバーレイです。デザインの勉強の一環として作成しました。",
+      "image": "/thumbnail_streamclocks.jpg",
+      "link": "https://stream-clocks.com/"
+    },
+    {
+      "id": 2,
+      "title": "Shiro",
+      "description": "架空の花屋のLPです。Next.jsとTailwind cssで構築しています。デザインはakane(@omsss22)さんのものを使用しています。",
+      "image": "/thumbnail_shiro.jpg",
+      "link": "https://shiro-one.vercel.app/",
+      "auth": "user:tsukuruhito pass:ts0711"
+    },
+    {
+      "id": 3,
+      "title": "Commin soon",
+      "description": "",
+      "image": "/thumbnail_init.jpg"
+    }
+  ],
+  "design": [
+    {
+      "id": 1,
+      "title": "テキスト出現アニメーション①",
+      "description": "Aeで作成したテキスト出現アニメーションです。",
+      "image": "/thumbnail_init.jpg",
+      "link": "https://youtu.be/OFEozVQTzcc"
+    }
+  ]
+}

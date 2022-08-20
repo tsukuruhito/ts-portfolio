@@ -1,132 +1,74 @@
-import Image from "next/image";
+import { motion } from "framer-motion";
+import { useAtom } from "jotai";
+import { Suspense } from "react";
+import { sceneAtom } from "../src/atom";
+import Card from "../src/components/Card";
 import Layout from "../src/components/Layout/Layout";
+import Loading from "../src/components/Loading";
+import Slider from "../src/components/Slider";
+import json from "../src/link.json";
 
-const works = () => {
-  const tech = [
-    {
-      id: 1,
-      title: "Stream clocks",
-      description: "Clocks for live streaming. Built with React.",
-      image: "/thumbnail_init.jpg",
-      link: "https://stream-clock.vercel.app/",
-    },
-    {
-      id: 2,
-      title: "Shiro",
-      description:
-        "Fictitious landing page, built with Next.js and tailwindcss. this design is made by akane(@omsss22).",
-      image: "/thumbnail_shiro.jpg",
-      link: "https://shiro-one.vercel.app/",
-      auth: "user:tsukuruhito pass:ts0711",
-    },
-    {
-      id: 2,
-      title: "comming soon",
-      description: "comming soon",
-      image: "/thumbnail_init.jpg",
-      link: "",
-    },
-  ];
-
-  const design = [
-    {
-      id: 1,
-      title: "comming soon",
-      description: "coming soon",
-      image: "/thumbnail_init.jpg",
-      link: "",
-    },
-  ];
+const Works = () => {
+  const [scene] = useAtom(sceneAtom);
   return (
-    <Layout title="works" isHeader={true} isFooter={true}>
-      <div
-        className="
-        bg-gradient-to-b from-[#305071] via-cyan-700 to-[#f3beb6] dark:from-[#0f111c] dark:via-[#233367] dark:to-[#2b476d] text-zinc-50 dark:text-zinc-300
-        p-4  
-      "
+    <Layout
+      title="Works | Ts Portfolio"
+      isHeader={true}
+      isFooter={true}
+      inView={true}
+    >
+      <motion.div
+        className="py-8"
+        initial={{ opacity: 0 }}
+        animate={!scene && { opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
-        <div className="mb-8 font-mono">
-          <h1 className="text-5xl font-bold">Works</h1>
-          <p className="text-lg leading-6">
-            This is works and practice products.
-          </p>
-          <p className="text-lg leading-6">
-            Mainly use React , Next.js and TypeScript.
-          </p>
-        </div>
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-4">LP and Web Application</h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 ">
-            {tech.map((tech) => {
-              return (
-                <div
-                  key={tech.id}
-                  className="card glass max-w-md md:w-full mx-auto w-full"
-                >
-                  <div className="relative w-full h-64 md:h-40">
-                    <Image
-                      src={tech.image}
-                      alt={tech.title}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>
-                  <div className="card-body">
-                    <h2 className="card-title">{tech.title}</h2>
-                    <p>{tech.description}</p>
-                    <p>{tech.auth}</p>
-                    <div className="card-actions justify-end">
-                      <a
-                        className="btn btn-primary"
-                        href={tech.link}
-                        rel="noopener noreferrer"
-                      >
-                        access
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+        <section className="pt-16 px-4 md:px-8 relative max-w-5xl mx-auto text-zinc-600 dark:text-white font-rodin box-border">
+          <div className="mb-8 relative z-10">
+            <h2 className="mb-2 font-futura text-5xl font-bold tracking-wider text-stone-400 dark:text-white mx-2 relative z-20">
+              Works
+            </h2>
+            <p className="text-base leading-6">
+              公開中のサービスや習作を掲載しています。
+            </p>
+            <p className="text-base leading-6">
+              多くのものはReact/Next.jsで作っています。
+            </p>
           </div>
-        </div>
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-4">Design and Motion</h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 ">
-            {design.map((design) => {
-              return (
-                <div
-                  key={design.id}
-                  className="card glass max-w-md md:w-full mx-auto w-full"
-                >
-                  <div className="relative w-full h-64 md:h-40">
-                    <Image
-                      src={design.image}
-                      alt={design.title}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>
-                  <div className="card-body">
-                    <h2 className="card-title">{design.title}</h2>
-                    <p>{design.description}</p>
-                    <div className="card-actions justify-end">
-                      <a
-                        className="btn btn-primary"
-                        href={design.link}
-                        rel="noopener noreferrer"
-                      >
-                        access
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="mb-8">
+            <h3 className="font-futura text-2xl font-bold tracking-wider text-stone-400 dark:text-white m-2">
+              Web Page &amp;
+              <span className="inline-block">Web Application</span>
+            </h3>
+            <Suspense fallback={<Loading />}>
+              <Card ary={json.tech} />
+            </Suspense>
           </div>
-        </div>
-      </div>
+          <div className="mb-8">
+            <h3 className="font-futura text-2xl font-bold tracking-wider text-stone-400 dark:text-white m-2">
+              Design &amp; Motion
+            </h3>
+            <Suspense fallback={<Loading />}>
+              <Card ary={json.design} />
+            </Suspense>
+          </div>
+        </section>
+        <section className="mt-24 px-4 md:px-8 relative max-w-5xl mx-auto text-zinc-600 dark:text-white font-rodin box-border">
+          <div className="mb-8 relative z-10">
+            <h2 className="mb-2 font-futura text-5xl font-bold tracking-wider text-stone-400 dark:text-white mx-2 relative z-20">
+              Photo
+            </h2>
+            <p className="text-base leading-6">
+              風景を撮ることも好きです。特に空が好きです。
+            </p>
+            <p className="text-base leading-6">
+              撮影した写真からお気に入りのものをいくつか掲載します。
+            </p>
+          </div>
+          <Slider />
+        </section>
+      </motion.div>
     </Layout>
   );
 };
-export default works;
+export default Works;
