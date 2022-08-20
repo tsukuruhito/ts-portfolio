@@ -1,7 +1,4 @@
-import { motion } from "framer-motion";
-import { useAtom } from "jotai";
 import { Suspense } from "react";
-import { sceneAtom } from "../src/atom";
 import Card from "../src/components/Card";
 import Layout from "../src/components/Layout/Layout";
 import Loading from "../src/components/Loading";
@@ -9,7 +6,6 @@ import Slider from "../src/components/Slider";
 import json from "../src/link.json";
 
 const Works = () => {
-  const [scene] = useAtom(sceneAtom);
   return (
     <Layout
       title="Works | Ts Portfolio"
@@ -17,12 +13,7 @@ const Works = () => {
       isFooter={true}
       inView={true}
     >
-      <motion.div
-        className="py-8"
-        initial={{ opacity: 0 }}
-        animate={!scene && { opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-      >
+      <div className="py-8">
         <section className="pt-16 px-4 md:px-8 relative max-w-5xl mx-auto text-zinc-600 dark:text-white font-rodin box-border">
           <div className="mb-8 relative z-10">
             <h2 className="mb-2 font-futura text-5xl font-bold tracking-wider text-stone-400 dark:text-white mx-2 relative z-20">
@@ -67,7 +58,7 @@ const Works = () => {
           </div>
           <Slider />
         </section>
-      </motion.div>
+      </div>
     </Layout>
   );
 };

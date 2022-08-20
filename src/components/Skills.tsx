@@ -41,7 +41,7 @@ const Skills = () => {
             return (
               <div
                 key={tech.id}
-                className="inline-block text-center text-stone-400 dark:text-white"
+                className="inline-block text-center text-zinc-500 dark:text-white"
               >
                 <motion.div
                   className="radial-progress m-2 radial-variant text-sm xs:text-base"
@@ -74,7 +74,7 @@ const Skills = () => {
             return (
               <div
                 key={des.id}
-                className="inline-block text-center text-stone-400 dark:text-white"
+                className="inline-block text-center text-zinc-500 dark:text-white"
               >
                 <motion.div
                   className="radial-progress m-2 radial-variant text-sm xs:text-base"

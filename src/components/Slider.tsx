@@ -1,6 +1,6 @@
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import Image from "next/future/image";
+import Image from "next/image";
 
 const Slider = () => {
   return (

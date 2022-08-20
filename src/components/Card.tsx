@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 
 type PropsType = {
   ary: {
@@ -25,8 +25,7 @@ const Card = (props: PropsType) => {
               <Image
                 src={i.image}
                 alt={i.title}
-                width={300}
-                height={100}
+                layout="fill"
                 className="w-full h-full object-cover"
                 priority
               />

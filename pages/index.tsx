@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
-import { useAtom } from "jotai";
 import type { NextPage } from "next";
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
-import { sceneAtom } from "../src/atom";
 import Kv from "../src/components/Kv";
 import Layout from "../src/components/Layout/Layout";
 import Skills from "../src/components/Skills";
@@ -15,7 +13,6 @@ const Home: NextPage = () => {
     threshold: 0.1,
   });
 
-  const [scene] = useAtom(sceneAtom);
   return (
     <>
       <Layout
@@ -24,12 +21,7 @@ const Home: NextPage = () => {
         isFooter={true}
         inView={inView}
       >
-        <motion.div
-          className="relative overflow-hidden"
-          initial={{ opacity: 0 }}
-          animate={!scene && { opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
+        <div className="relative overflow-hidden">
           <Kv />
           <div ref={ref} className="py-8">
             <section
@@ -153,7 +145,7 @@ const Home: NextPage = () => {
               </div>
             </section>
           </div>
-        </motion.div>
+        </div>
       </Layout>
     </>
   );

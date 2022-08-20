@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useAtom } from "jotai";
+import Image from "next/image";
 import { useState } from "react";
 import { sceneAtom } from "../atom";
 
@@ -30,17 +31,16 @@ const Kv = () => {
     <div className="h-screen mx-auto relative overflow-hidden">
       {!scene && (
         <>
-          <motion.img
-            src="/kvimg.jpg"
+          <motion.div
             className="absolute z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover object-left-bottom"
             variants={zoomIn}
             initial={"initial"}
             animate={"animate"}
             transition={{ duration: 3, ease: [0.2, 0.05, -0.01, 0.9] }}
             style={{ width: "110vw", height: "110vh" }}
-            alt="kv"
-            loading="lazy"
-          ></motion.img>
+          >
+            <Image src="/kvimg.jpg" alt="kv" layout="fill" objectFit="cover" />
+          </motion.div>
           <motion.div className="kv_title md:ml-24 text-right w-full p-4 box-border md:p-0 md:w-auto">
             <motion.div
               variants={moveIn}
