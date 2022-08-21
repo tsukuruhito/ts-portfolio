@@ -25,8 +25,6 @@ const Theme = () => {
       document.documentElement.classList.add("dark");
     }
   }, []);
-
-  console.log(isOn)
   return (
     <div
       className={
