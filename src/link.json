@@ -17,9 +17,10 @@
     },
     {
       "id": 3,
-      "title": "Commin soon",
-      "description": "",
-      "image": "/thumbnail_init.jpg"
+      "title": "Framer Animation",
+      "description": "Framer Motionの練習で作成したアニメーションデモページです。",
+      "image": "/thumbnail_framer.jpg",
+      "link": "https://framer-animation-coral.vercel.app/"
     }
   ],
   "design": [
