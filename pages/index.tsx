@@ -105,17 +105,17 @@ const Home: NextPage = () => {
                 <h2 className="section_title before:content-['Works']">
                   Works
                 </h2>
-                <div className="my-8 ">
-                  <Image
-                    src="/works.jpg"
-                    alt="works"
-                    width={700}
-                    height={500}
-                    className="
-                          w-4/5 h-1/3 md:h-auto md:w-auto sm:ml-auto mr-12 sm:mr-32
-                          max-w-lg object-cover object-center
-                        "
-                  />
+                <div className="my-8">
+                  <div 
+                    className="relative mr-8 sm:mr-32 sm:ml-auto max-w-lg
+                  ">
+                    <Image
+                      src="/works.jpg"
+                      alt="works"
+                      width={700}
+                      height={450}
+                    />
+                  </div>
                   <div
                     className="
                           w-5/6 ml-auto md:w-auto text-sm

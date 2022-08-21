@@ -23,15 +23,16 @@ const Header = (props: Props) => {
       <h1 className="cursor-pointer">
         <Link href="/" passHref>
           <a className="flex items-center">
-            <Image
-              src="/fav-w.png"
-              alt="logo"
-              width={100}
-              height={50}
-              objectFit="contain"
-              objectPosition="center"
-              className="w-[100px] h-[50px]"
-            />
+            <span className="w-[100px] h-[50px] relative">
+              <Image
+                src="/fav-w.png"
+                alt="logo"
+                layout="fill"
+                objectPosition="center"
+                objectFit="contain"
+                sizes="(max-width: 768px) 100vw, 100vw"
+              />
+            </span>
             <span className="text-2xl font-semibold dark:text-white hidden md:block">
               ts port
             </span>

@@ -36,10 +36,10 @@ const Kv = () => {
             variants={zoomIn}
             initial={"initial"}
             animate={"animate"}
-            transition={{ duration: 3, ease: [0.2, 0.05, -0.01, 0.9] }}
+            transition={{ duration: 1.5, ease: [0.2, 0.05, -0.01, 0.9] }}
             style={{ width: "110vw", height: "110vh" }}
           >
-            <Image src="/kvimg.jpg" alt="kv" layout="fill" objectFit="cover" />
+            <Image src="/kvimg.webp" alt="kv" layout="fill" objectFit="cover" priority className="filter contrast-150 brightness-80"/>
           </motion.div>
           <motion.div className="kv_title md:ml-24 text-right w-full p-4 box-border md:p-0 md:w-auto">
             <motion.div
