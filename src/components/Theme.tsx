@@ -5,7 +5,7 @@ const Theme = () => {
   const [isOn, setIsOn] = useState(false);
   const toggleSwitch = () => {
     setIsOn(!isOn);
-    if (isOn === false) {
+    if (!isOn) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     } else {
@@ -26,12 +26,13 @@ const Theme = () => {
     }
   }, []);
 
+  console.log(isOn)
   return (
     <div
       className={
         isOn
-          ? "flex w-14 h-8 m-2 p-1 bg-stone-600 rounded-full items-center justify-end"
-          : "flex w-14 h-8 m-2 p-1 bg-stone-400 rounded-full items-center justify-start"
+        ? "flex w-14 h-8 m-2 p-1 bg-stone-600 rounded-full items-center justify-end"
+        : "flex w-14 h-8 m-2 p-1 bg-stone-400 rounded-full items-center justify-start"
       }
       onClick={toggleSwitch}
     >
