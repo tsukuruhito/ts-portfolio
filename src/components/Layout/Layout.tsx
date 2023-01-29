@@ -1,5 +1,7 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { FunctionComponent, ReactNode } from "react";
+import SceneChange from "../SceneChange";
 import Footer from "./Footer";
 import Header from "./Header";
 
@@ -7,7 +9,7 @@ type Props = {
   title: string;
   isHeader: boolean;
   isFooter: boolean;
-  inView: boolean;
+  isMenu: boolean;
   children: ReactNode;
 };
 
@@ -15,21 +17,23 @@ const Layout: FunctionComponent<Props> = ({
   title,
   isHeader,
   isFooter,
-  inView,
+  isMenu,
   children,
 }) => {
+  const router = useRouter();
   return (
-    <div
-      className="bg-transparent dark:bg-zinc-500
-    "
-    >
+    <>
       <Head>
-        <title>{title}</title>
+        <title>{router.pathname === "/" ? title : `${title} | Ts Port`}</title>
       </Head>
-      {isHeader && <Header inView={inView} />}
-      {children}
-      {isFooter && <Footer />}
-    </div>
+      <div className="bg-white dark:bg-zinc-600 min-h-screen">
+        {isHeader && <Header isMenu={isMenu} />}
+        <SceneChange>
+          {children}
+          {isFooter && <Footer />}
+        </SceneChange>
+      </div>
+    </>
   );
 };
 

@@ -4,23 +4,46 @@
       "id": 1,
       "title": "Stream clocks",
       "description": "配信用の時計オーバーレイです。デザインの勉強の一環として作成しました。",
+      "stack": "Next.js, TypeScript, Jotai, Tailwind css",
       "image": "/thumbnail_streamclocks.jpg",
       "link": "https://stream-clocks.com/"
     },
     {
       "id": 2,
       "title": "Shiro",
-      "description": "架空の花屋のLPです。Next.jsとTailwind cssで構築しています。デザインはakane(@omsss22)さんのものを使用しています。",
+      "description": "架空の花屋のLPです。デザインはakane(@omsss22)さんのものを使用しています。",
+      "stack": "Next.js, TypeScript, Tailwind css",
       "image": "/thumbnail_shiro.jpg",
       "link": "https://shiro-one.vercel.app/",
-      "auth": "user:tsukuruhito pass:ts0711"
+      "auth": "user:tsukuruhito pass:ts0711",
+      "practice": true
     },
     {
       "id": 3,
       "title": "Framer Animation",
-      "description": "Framer Motionの練習で作成したアニメーションデモページです。",
+      "description": "Framer Motionの練習で作成したアニメーションデモページです。今後も練習のために追加していく予定です。",
+      "stack": "Next.js, TypeScript, jotai, Framer Motion, Tailwind css",
       "image": "/thumbnail_framer.jpg",
-      "link": "https://framer-animation-coral.vercel.app/"
+      "link": "https://framer-animation-coral.vercel.app/",
+      "practice": true
+    },
+    {
+      "id": 4,
+      "title": "Gadget Tech Blog",
+      "description": "Jamstack構成の練習として、Next.jsとMicroCMSを使用して作成したブログです。",
+      "stack": "Next.js, TypeScript, jotai, MicroCMS, Tailwind css",
+      "image": "/thumbnail_jamjam.jpg",
+      "link": "https://ts-jamjam.vercel.app/",
+      "practice": true
+    },
+    {
+      "id": 5,
+      "title": "Upu",
+      "description": "AstroとMicroCMSを使用して作成した架空のカフェサイトです。練習のためデザイン含めて自身で制作しました。",
+      "stack": "Astro, TypeScript, MicroCMS",
+      "image": "/thumbnail_upu.jpg",
+      "link": "https://upu.pages.dev/",
+      "practice": true
     }
   ],
   "design": [
@@ -29,7 +52,17 @@
       "title": "テキスト出現アニメーション①",
       "description": "Aeで作成したテキスト出現アニメーションです。",
       "image": "/thumbnail_init.jpg",
-      "link": "https://youtu.be/OFEozVQTzcc"
+      "link": "https://youtu.be/OFEozVQTzcc",
+      "practice": true
+    },
+    {
+      "id": 2,
+      "title": "Upu",
+      "description": "AstroとMicroCMSを使用して作成した架空のカフェサイトです。練習のためデザイン含めて自身で制作しました。",
+      "stack": "Adobe XD, Adobe Illustrator",
+      "image": "/thumbnail_upu.jpg",
+      "link": "https://upu.pages.dev/",
+      "practice": true
     }
   ]
 }

@@ -4,13 +4,9 @@ const Footer: FunctionComponent = () => {
   const year = new Date().getFullYear();
 
   return (
-    <>
-      <footer className="footer footer-center p-4 bg-base-300 text-base-content dark:bg-zinc-600 dark:text-slate-100">
-        <div>
-          <p>Copyright © {year} - All right reserved by Tsuku</p>
-        </div>
-      </footer>
-    </>
+    <div className="footer text-base-content absolute inline-block bottom-0 right-0 w-auto p-2 dark:text-white">
+      <p>Copyright © {year} - All right reserved by Tsuku</p>
+    </div>
   );
 };
 

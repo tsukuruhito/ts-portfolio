@@ -2,63 +2,82 @@ import Link from "next/link";
 import Image from "next/image";
 import Theme from "../Theme";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 type Props = {
-  inView: boolean;
+  isMenu: boolean;
 };
 const Header = (props: Props) => {
-  const { inView } = props;
+  const { isMenu } = props;
+  const router = useRouter();
   return (
-    <motion.header
-      className={`fixed w-full z-30 flex justify-between items-center font-futura tracking-tight py-2 uppercase flex-row transition-all duration-500 ease-in-out
+    <header
+      className={`fixed top-0 w-full z-50 font-futura tracking-tight py-2 uppercase transition-all duration-500 ease-in-out
         ${
-          inView
-            ? "bg-zinc-400/80 dark:border-gray-600 text-white"
+          router.pathname !== "/"
+            ? "bg-zinc-600/80 dark:border-gray-600 text-white"
             : "bg-transparent text-white"
         }
-        `}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      `}
     >
-      <h1 className="cursor-pointer">
-        <Link href="/" passHref>
-          <a className="flex items-center">
+      <motion.div
+        initial={{ opacity: 0, pointerEvents: "none", filter: "blur(5px)" }}
+        animate={{ opacity: 1, pointerEvents: "auto", filter: "blur(0px)" }}
+        exit={{ opacity: 0, pointerEvents: "none", filter: "blur(5px)" }}
+        transition={{ ease: "easeInOut", duration: 0.5 }}
+        className="flex justify-between items-center flex-row"
+      >
+        <h1 className="cursor-pointer">
+          <Link href="/" className="flex items-center">
             <span className="w-[100px] h-[50px] relative">
               <Image
                 src="/fav-w.png"
                 alt="logo"
-                layout="fill"
-                objectPosition="center"
-                objectFit="contain"
-                sizes="(max-width: 768px) 100vw, 100vw"
+                fill
+                className="object-contain"
+                sizes="100px"
               />
             </span>
             <span className="text-2xl font-semibold dark:text-white hidden md:block">
               ts port
             </span>
-          </a>
-        </Link>
-      </h1>
-      <ul className="text-lg flex items-center">
-        <li className="cursor-pointer">
-          <Link href="/" passHref>
-            <a className="inline-block m-2 p-2 defaultLink dark:text-white">
-              top
-            </a>
           </Link>
-        </li>
-        <li className="cursor-pointer">
-          <Link href="/works" passHref>
-            <a className="inline-block m-2 p-2 defaultLink dark:text-white">
-              works
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Theme />
-        </li>
-      </ul>
-    </motion.header>
+        </h1>
+        <ul className="text-sm md:text-lg flex items-center">
+          {isMenu && (
+            <>
+              <li className="cursor-pointer">
+                <Link
+                  href="/"
+                  className="inline-block mx-1 p-2 defaultLink dark:text-white"
+                >
+                  top
+                </Link>
+              </li>
+              <li className="cursor-pointer">
+                <Link
+                  href="/works"
+                  className="inline-block mx-1 p-2 defaultLink dark:text-white"
+                >
+                  works
+                </Link>
+              </li>
+              <li className="cursor-pointer">
+                <Link
+                  href="/skills"
+                  className="inline-block mx-1 p-2 defaultLink dark:text-white"
+                >
+                  skills
+                </Link>
+              </li>
+            </>
+          )}
+          <li>
+            <Theme />
+          </li>
+        </ul>
+      </motion.div>
+    </header>
   );
 };
 

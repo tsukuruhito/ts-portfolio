@@ -1,7 +1,6 @@
-import { motion, useMotionValue, useTime, useTransform } from "framer-motion";
+import { motion, useTime, useTransform } from "framer-motion";
 
 const Loading = () => {
-  const x = useMotionValue(0);
   const time = useTime();
   const rotate = useTransform(time, [0, 2500], [0, 360], { clamp: false });
   return (

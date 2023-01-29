@@ -29,8 +29,8 @@ const Theme = () => {
     <div
       className={
         isOn
-        ? "flex w-14 h-8 m-2 p-1 bg-stone-600 rounded-full items-center justify-end"
-        : "flex w-14 h-8 m-2 p-1 bg-stone-400 rounded-full items-center justify-start"
+          ? "flex w-14 h-8 m-2 p-1 bg-zinc-400 rounded-full items-center justify-end"
+          : "flex w-14 h-8 m-2 p-1 bg-zinc-600 rounded-full items-center justify-start"
       }
       onClick={toggleSwitch}
     >

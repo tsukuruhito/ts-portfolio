@@ -16,8 +16,8 @@
 
 @layer components{
     .kv_title{
-        @apply text-7xl font-bold z-20 text-white/80 tracking-wider absolute top-1/2 -translate-y-1/2 text-right drop-shadow-sm
-        md:right-[10%] md:text-8xl lg:top-1/3;
+        @apply text-7xl font-bold z-20 text-white tracking-wider absolute top-1/3 -translate-y-1/2 text-right drop-shadow-lg
+        md:right-[10%] md:text-8xl;
         font-family: futura-pt, sans-serif;
         font-weight: 500;
         font-style: normal;
@@ -25,7 +25,7 @@
     }
     .kv_sub{
         @apply text-white text-sm drop-shadow-md
-        md:text-xl
+        md:text-base
         ;
     }
     .font-futura{
@@ -38,19 +38,23 @@
         font-weight: 600;
         font-style: normal;
     }
-    .mask-kv{
-        mask-image: url("/kvimg.jpg");
-        mask-size: cover;
-        mask-repeat: no-repeat;
-    }
     .section_title{
-        @apply font-futura inline-block text-5xl font-bold tracking-wider text-stone-400 dark:text-white relative z-20
+        @apply font-futura text-left text-5xl font-bold tracking-wider text-stone-500 dark:text-white relative z-20
         before:text-stone-200 before:drop-shadow-sm before:absolute before:-z-10 before:top-1 before:left-1
         dark:before:text-stone-400/40
     }
     .metricsBox{
-        @apply font-rodin text-base p-4 my-2 box-border relative before:absolute before:block before:w-full before:h-full before:border before:pointer-events-none
-        w-full max-w-lg self-center sm:self-auto
+        @apply font-rodin text-base my-8 box-border relative
+        w-full self-center sm:self-auto break-words
+    }
+    .lower_page{
+        @apply pt-20 pb-10 px-4 md:px-8 relative max-w-5xl mx-auto text-zinc-600 dark:text-white font-rodin box-border text-base leading-6 capitalize
+    }
+    .h_section{
+        @apply mb-2 font-futura text-5xl font-bold tracking-wider text-stone-400 dark:text-white capitalize
+    }
+    .h_section-sub{
+        @apply mb-2 font-futura text-2xl font-bold tracking-wider text-stone-400 dark:text-white capitalize
     }
 }
 
