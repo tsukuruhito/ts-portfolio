@@ -25,7 +25,7 @@ const Kv = () => {
     },
   };
   return (
-    <div className="h-screen mx-auto relative overflow-hidden">
+    <div className="kv_size mx-auto relative overflow-hidden">
       <>
         <motion.div
           className="relative z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover object-left-bottom"
@@ -40,8 +40,8 @@ const Kv = () => {
             alt="kv"
             fill
             sizes="100vw"
-            priority
             className="brightness-60 object-cover"
+            loading="eager"
           />
         </motion.div>
         <motion.div className="kv_title md:ml-24 text-right w-full p-4 box-border md:p-0 md:w-auto">
