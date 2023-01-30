@@ -33,6 +33,20 @@ const Document = () => {
         />
         <meta name="msapplication-TileColor" content="#2d89ef" />
         <meta name="theme-color" content="#ffffff" />
+        <meta property="og:url" content="https://ts-createport.site/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="ts port"/>
+        <meta property="og:description" content="This is my portfoio site to description my skills and show products"/>
+        <meta property="og:image" content="https://ts-createport.site/ogp.jpg"/>
+        <meta property="og:site_name" content="ts port"/>
+        <meta property="og:locale" content="ja_JP"/>
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="@ts_create_"/>
+        <meta name="twitter:creator" content="@ts_create_"/>
+        <meta name="twitter:title" content="ts port"/>
+        <meta name="twitter:description" content="This is my portfoio site to description my skills and show products"/>
+        <meta name="twitter:image" content="https://ts-createport.site/ogp.jpg"/>
+        <meta name="twitter:url" content="https://ts-createport.site/"/>
         <script
           dangerouslySetInnerHTML={{
             __html: `
