@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 function MyApp({ Component, pageProps }: AppProps) {
   const rounter = useRouter();
   return (
-    <AnimatePresence exitBeforeEnter initial={false} custom="wait">
+    <AnimatePresence exitBeforeEnter initial={true} custom="wait">
       <Component {...pageProps} key={rounter.route} />
     </AnimatePresence>
   );
