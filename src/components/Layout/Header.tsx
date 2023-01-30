@@ -11,19 +11,14 @@ const Header = (props: Props) => {
   const { isMenu } = props;
   const router = useRouter();
   return (
-    <header
-      className={`fixed top-0 w-full z-50 font-futura tracking-tight py-2 uppercase transition-all duration-500 ease-in-out
-      flex justify-between items-center flex-row
-        ${
-          router.pathname !== "/"
-            ? "bg-stone-600/80 dark:bg-stone-800/80 dark:border-gray-600 text-white"
-            : "bg-transparent text-white"
-        }
+    <motion.header
+      className={`fixed top-0 w-full z-50 font-futura tracking-tight p-2 uppercase transition-all duration-500 ease-in-out
+      flex justify-between items-center flex-col md:flex-row bg-stone-600/80 dark:bg-stone-800/80 dark:border-gray-600 text-white
       `}
     >
         <h1 className="cursor-pointer">
           <Link href="/" className="flex items-center">
-            <span className="w-[100px] h-[50px] relative">
+            <span className="w-12 md:w-16 h-[50px] relative mr-2">
               <Image
                 src="/fav-w.png"
                 alt="logo"
@@ -32,7 +27,7 @@ const Header = (props: Props) => {
                 sizes="100px"
               />
             </span>
-            <span className="text-2xl font-semibold dark:text-white hidden md:block">
+            <span className="text-2xl font-semibold dark:text-white">
               ts port
             </span>
           </Link>
@@ -70,7 +65,7 @@ const Header = (props: Props) => {
             <Theme />
           </li>
         </ul>
-    </header>
+    </motion.header>
   );
 };
 
