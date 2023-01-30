@@ -52,13 +52,32 @@
         w-full self-center sm:self-auto break-words
     }
     .lower_page{
-        @apply pt-20 pb-10 px-4 md:px-8 relative max-w-5xl mx-auto text-zinc-600 dark:text-white font-rodin box-border text-base leading-6 capitalize
+        @apply pt-32 pb-10 px-4 md:px-8 relative max-w-5xl mx-auto text-zinc-600 dark:text-white font-rodin box-border text-base leading-6 capitalize
     }
     .h_section{
         @apply mb-2 font-futura text-5xl font-bold tracking-wider text-stone-400 dark:text-white capitalize
     }
     .h_section-sub{
         @apply mb-2 font-futura text-2xl font-bold tracking-wider text-stone-400 dark:text-white capitalize
+    }
+    .top_link{
+        @apply pr-3 relative;
+    }
+    .top_link::before{
+        content: "";
+        @apply inline-block h-2 w-2 absolute right-0 top-1/2 -translate-y-1/2 border-t-2 border-r-2 rotate-45;
+    }
+    .skill_box{
+        @apply relative w-full h-full mt-4 grid grid-cols-3 md:grid-cols-4 gap-4 border-[1px] p-4 border-stone-400 dark:border-white bg-stone-100 dark:bg-stone-800
+        before:content-[""] before:absolute before:block before:w-full before:h-full before:right-1 before:bottom-1 before:border-stone-400 before:border-[1px] before:dark:border-white before:z-10
+        after:content-["etc..."] after:absolute after:-bottom-5 after:right-0 after:text-xs
+    }
+    .skill_item{
+        @apply pl-4 relative
+    }
+    .skill_item::before{
+        content: "";
+        @apply inline-block h-2 w-2 border-2 border-stone-600 dark:border-white absolute left-0 top-1/2 -translate-y-1/2;
     }
 }
 

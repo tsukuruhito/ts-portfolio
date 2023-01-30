@@ -7,12 +7,9 @@ import { Analytics } from '@vercel/analytics/react';
 function MyApp({ Component, pageProps }: AppProps) {
   const rounter = useRouter();
   return (
-    <>
-      <AnimatePresence exitBeforeEnter custom="wait">
-        <Component {...pageProps} key={rounter.route} />
-      </AnimatePresence>
-      <Analytics />
-    </>
+    <AnimatePresence exitBeforeEnter initial={true} custom="wait">
+      <Component {...pageProps} key={rounter.route} />
+    </AnimatePresence>
   );
 }
 
