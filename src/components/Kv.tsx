@@ -26,7 +26,7 @@ const Kv = () => {
   return (
     <div className="h-screen mx-auto relative overflow-hidden">
         <motion.div
-          className="relative z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover object-left-bottom bg-hero bg-center"
+          className="relative z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover object-left-bottom bg-hero bg-center bg-cover"
           variants={zoomIn}
           initial={"initial"}
           animate={"animate"}
