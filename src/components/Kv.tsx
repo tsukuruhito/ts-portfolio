@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useState } from "react";
 
 const Kv = () => {
@@ -26,23 +25,14 @@ const Kv = () => {
   };
   return (
     <div className="h-screen mx-auto relative overflow-hidden">
-      <>
         <motion.div
-          className="relative z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover object-left-bottom"
+          className="relative z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover object-left-bottom bg-hero bg-center"
           variants={zoomIn}
           initial={"initial"}
           animate={"animate"}
           transition={{ duration: 1.5, ease: [0.2, 0.05, -0.01, 0.9] }}
           style={{ width: "100vw", height: "100vh" }}
         >
-          <Image
-            src="/kvimg.webp"
-            alt="kv"
-            fill
-            sizes="100vw"
-            priority
-            className="brightness-60 object-cover"
-          />
         </motion.div>
         <motion.div className="kv_title md:ml-24 text-right w-full p-4 box-border md:p-0 md:w-auto">
           <motion.div
@@ -92,10 +82,9 @@ const Kv = () => {
             className="kv_sub font-rodin leading-relaxed"
           >
             <p>クリエイティブに生きたい</p>
-            <p>そんな僕の表現の入口</p>
+            <p>そんな自分の表現のポータル</p>
           </motion.div>
         </motion.div>
-      </>
     </div>
   );
 };

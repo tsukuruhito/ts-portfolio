@@ -13,20 +13,14 @@ const Header = (props: Props) => {
   return (
     <header
       className={`fixed top-0 w-full z-50 font-futura tracking-tight py-2 uppercase transition-all duration-500 ease-in-out
+      flex justify-between items-center flex-row
         ${
           router.pathname !== "/"
-            ? "bg-zinc-600/80 dark:border-gray-600 text-white"
+            ? "bg-stone-600/80 dark:bg-stone-800/80 dark:border-gray-600 text-white"
             : "bg-transparent text-white"
         }
       `}
     >
-      <motion.div
-        initial={{ opacity: 0, pointerEvents: "none", filter: "blur(5px)" }}
-        animate={{ opacity: 1, pointerEvents: "auto", filter: "blur(0px)" }}
-        exit={{ opacity: 0, pointerEvents: "none", filter: "blur(5px)" }}
-        transition={{ ease: "easeInOut", duration: 0.5 }}
-        className="flex justify-between items-center flex-row"
-      >
         <h1 className="cursor-pointer">
           <Link href="/" className="flex items-center">
             <span className="w-[100px] h-[50px] relative">
@@ -76,7 +70,6 @@ const Header = (props: Props) => {
             <Theme />
           </li>
         </ul>
-      </motion.div>
     </header>
   );
 };

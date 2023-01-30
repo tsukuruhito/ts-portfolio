@@ -26,9 +26,9 @@ const Layout: FunctionComponent<Props> = ({
       <Head>
         <title>{router.pathname === "/" ? title : `${title} | Ts Port`}</title>
       </Head>
-      <div className="bg-white dark:bg-zinc-600 min-h-screen">
-        {isHeader && <Header isMenu={isMenu} />}
+      <div className="bg-stone-200 dark:bg-stone-600 min-h-screen">
         <SceneChange>
+          {isHeader && <Header isMenu={isMenu} />}
           {children}
           {isFooter && <Footer />}
         </SceneChange>

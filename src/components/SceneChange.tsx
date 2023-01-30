@@ -7,10 +7,11 @@ type Props = {
 const SceneChange = ({ children }: Props) => {
   return (
     <motion.div
-      initial={{ opacity: 0, pointerEvents: "none", filter: "blur(5px)" }}
-      animate={{ opacity: 1, pointerEvents: "auto", filter: "blur(0px)" }}
+      initial={{ opacity: 0, pointerEvents: "none" }}
+      animate={{ opacity: 1, pointerEvents: "initial", filter: "none" }}
       exit={{ opacity: 0, pointerEvents: "none", filter: "blur(5px)" }}
       transition={{ ease: "easeInOut", duration: 0.5 }}
+      className="relative"
     >
       {children}
     </motion.div>
