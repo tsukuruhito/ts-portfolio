@@ -13,25 +13,24 @@
     clip-path: inset(0 0 0 0);
     opacity:1;
 }
+@layer base{
+    :root{
+        background-color: #fff;
+        color: #3c3c3c;
+        font-size: min(5vw, 1.2rem);
+    }
+    :root.dark{
+        background-color: #000;
+        color: #fff;
+    }
+    @media (min-width:768px) {
+        :root {
+            font-size: 1rem;
+        }        
+    }
+}
 
 @layer components{
-    .kv_size{
-        height: 100dvh;
-        @apply h-screen
-    }
-    .kv_title{
-        @apply text-7xl font-bold z-20 text-white tracking-wider absolute top-1/3 -translate-y-1/2 text-right drop-shadow-lg
-        md:right-[10%] md:text-8xl;
-        font-family: futura-pt, sans-serif;
-        font-weight: 500;
-        font-style: normal;
-        word-break: break-all;
-    }
-    .kv_sub{
-        @apply text-white text-sm drop-shadow-md
-        md:text-base
-        ;
-    }
     .font-futura{
         font-family: futura-pt, sans-serif;
         font-weight: 500;

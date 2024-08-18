@@ -1,0 +1,70 @@
+'use client';
+import Link from 'next/link';
+import Image from 'next/image';
+import Theme from './Theme';
+
+type Props = {
+    isMenu: boolean;
+};
+const Header = (props: Props) => {
+    const { isMenu } = props;
+    return (
+        <header
+            className={`fixed top-0 w-full md:min-h-[5rem] min-h-[8rem] z-50 font-futura tracking-tight p-2 uppercase
+      flex justify-between items-center flex-col md:flex-row bg-white dark:bg-stone-800/80 dark:border-gray-600 drop-shadow-md
+      `}
+        >
+            <h1 className="cursor-pointer">
+                <Link href="/" className="flex items-center">
+                    <span className="w-12 md:w-16 h-[50px] relative mr-2">
+                        <Image
+                            src="/fav-w.png"
+                            alt="logo"
+                            fill
+                            className="object-contain"
+                            sizes="100px"
+                        />
+                    </span>
+                    <span className="text-2xl font-semibold text-inherit dark:text-white">
+                        ts port
+                    </span>
+                </Link>
+            </h1>
+            <ul className="text-sm md:text-lg flex items-center tracking-wide">
+                {isMenu && (
+                    <>
+                        <li className="cursor-pointer">
+                            <Link
+                                href="/"
+                                className="inline-block mx-1 p-2 defaultLink dark:text-white"
+                            >
+                                top
+                            </Link>
+                        </li>
+                        <li className="cursor-pointer">
+                            <Link
+                                href="/works"
+                                className="inline-block mx-1 p-2 defaultLink dark:text-white"
+                            >
+                                works
+                            </Link>
+                        </li>
+                        <li className="cursor-pointer">
+                            <Link
+                                href="/skills"
+                                className="inline-block mx-1 p-2 defaultLink dark:text-white"
+                            >
+                                skills
+                            </Link>
+                        </li>
+                    </>
+                )}
+                <li>
+                    <Theme />
+                </li>
+            </ul>
+        </header>
+    );
+};
+
+export default Header;
