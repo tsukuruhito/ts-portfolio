@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { FunctionComponent, ReactNode } from "react";
+import type { FunctionComponent, ReactNode } from "react";
 import SceneChange from "../SceneChange";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -26,7 +26,7 @@ const Layout: FunctionComponent<Props> = ({
       <Head>
         <title>{router.pathname === "/" ? title : `${title} | Ts Port`}</title>
       </Head>
-      <div className="bg-stone-200/80 dark:bg-stone-600 min-h-screen">
+      <div className="bg-stone-600 min-h-screen">
         <SceneChange>
           {isHeader && <Header isMenu={isMenu} />}
           {children}

@@ -1,35 +1,34 @@
 {
-  "name": "tsport",
-  "version": "0.2.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write --ignore-path .gitignore \"./**/*.{js,jsx,ts,tsx,json}\""
-  },
-  "dependencies": {
-    "@splidejs/react-splide": "^0.7.8",
-    "daisyui": "^2.17.0",
-    "framer-motion": "^6.4.2",
-    "jotai": "^1.7.8",
-    "next": "^13.1.1",
-    "prettier": "^2.7.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-intersection-observer": "^9.3.4"
-  },
-  "devDependencies": {
-    "@types/node": "18.0.0",
-    "@types/react": "18.0.14",
-    "@types/react-dom": "18.0.5",
-    "autoprefixer": "^10.4.7",
-    "eslint": "8.18.0",
-    "eslint-config-next": "12.1.6",
-    "eslint-config-prettier": "^8.5.0",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.4",
-    "typescript": "4.7.4"
-  }
+    "name": "tsport",
+    "version": "0.2.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "biome lint -- apply --ignore-path .gitignore \"./**/*.{js,jsx,ts,tsx,json}\"",
+        "format": "biome format --ignore-path .gitignore \"./**/*.{js,jsx,ts,tsx,json}\" --write",
+        "check": "biome check --apply <files>"
+    },
+    "dependencies": {
+        "@splidejs/react-splide": "^0.7.8",
+        "@vercel/analytics": "^1.3.1",
+        "daisyui": "^4.12.10",
+        "framer-motion": "^11.3.28",
+        "jotai": "^2.9.3",
+        "next": "^14.2.5",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-intersection-observer": "^9.3.4"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^1.8.3",
+        "@types/node": "^22.4.0",
+        "@types/react": "18.0.14",
+        "@types/react-dom": "18.0.5",
+        "autoprefixer": "^10.4.7",
+        "postcss": "^8.4.14",
+        "tailwindcss": "^3.1.4",
+        "typescript": "^5.5.4"
+    }
 }
