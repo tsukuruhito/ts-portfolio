@@ -1,5 +1,6 @@
+import Kv from '@/components/Kv';
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
     title: 'Ts Port',
@@ -9,19 +10,10 @@ export const metadata: Metadata = {
 const Home= () => {
     return (
         <div>
-            <div className="relative overflow-hidden">
-                <ul className="z-50 text-lg font-rodin uppercase text-right leading-8 tracking-widest">
-                    <li>
-                        <Link href="/works" className="top_link">
-                            works
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/skills" className="top_link">
-                            skills
-                        </Link>
-                    </li>
-                </ul>
+            <div className="">
+                <Suspense fallback={null}>
+                    <Kv/>
+                </Suspense>
             </div>
         </div>
     );

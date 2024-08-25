@@ -95,7 +95,7 @@ export default function RootLayout({
             <body>
                 <ThemeProvider attribute='class' defaultTheme='ecosystem' enableSystem>
                     <Header isMenu={true}/>
-                    <main>
+                    <main className='pt-24'>
                         {children}
                     </main>
                     <Footer />
@@ -103,4 +103,4 @@ export default function RootLayout({
             </body>
         </html>
     );
-}
+};

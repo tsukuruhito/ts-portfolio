@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     formats: ["image/webp"],
   },
+  transpilePackages: ['three'],
 };
 
 module.exports = nextConfig;
