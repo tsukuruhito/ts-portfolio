@@ -92,10 +92,10 @@ export default function RootLayout({
                     }}
                 />
             </head>
-            <body>
+            <body className='bg-[#FAFAFA]'>
                 <ThemeProvider attribute='class' defaultTheme='ecosystem' enableSystem>
                     <Header isMenu={true}/>
-                    <main className='pt-24'>
+                    <main className='pt-32 md:pt-24'>
                         {children}
                     </main>
                     <Footer />
