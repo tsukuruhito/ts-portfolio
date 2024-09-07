@@ -3,7 +3,8 @@ import type { ReactNode } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import type { Metadata } from 'next';
-import { ThemeProvider } from 'next-themes'
+import { ThemeProvider } from 'next-themes';
+import Head from 'next/head';
 
 type Props = {
     title: string;
@@ -38,9 +39,7 @@ export const metadata: Metadata = {
     ],
 };
 
-export default function RootLayout({
-    children,
-}: Props) {
+export default function RootLayout({ children }: Props) {
     return (
         <html lang="ja" suppressHydrationWarning>
             <head>
@@ -76,31 +75,24 @@ export default function RootLayout({
                     name="twitter:url"
                     content="https://ts-createport.site/"
                 />
-                <script
-                    // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                        (function(d) {
-                            var config = {
-                            kitId: 'wgv0eqk',
-                            scriptTimeout: 3000,
-                            async: true
-                            },
-                            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-                        })(document);
-                        `,
-                    }}
-                />
+                <Head>
+                    <link
+                        rel="stylesheet"
+                        href="https://use.typekit.net/kwf0rbn.css"
+                    />
+                </Head>
             </head>
-            <body className='bg-[#FAFAFA]'>
-                <ThemeProvider attribute='class' defaultTheme='ecosystem' enableSystem>
-                    <Header isMenu={true}/>
-                    <main className='pt-32 md:pt-24'>
-                        {children}
-                    </main>
+            <body className="bg-[#FAFAFA] dark:bg-[#3c3c3c]">
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="ecosystem"
+                    enableSystem
+                >
+                    <Header isMenu={true} />
+                    <main className="pt-32 md:pt-24">{children}</main>
                     <Footer />
                 </ThemeProvider>
             </body>
         </html>
     );
-};
+}

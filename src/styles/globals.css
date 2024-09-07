@@ -17,7 +17,8 @@
     :root{
         background-color: #fff;
         color: #3c3c3c;
-        font-size: min(5vw, 1.2rem);
+        font-size: min(4vw, 1rem);
+        font-family: "adobe-caslon-pro", serif;
     }
     :root.dark{
         background-color: #3c3c3c;
@@ -53,9 +54,6 @@
     .lower_page{
         @apply pt-32 pb-10 px-4 md:px-8 relative max-w-5xl mx-auto text-zinc-600 dark:text-white font-rodin box-border text-base leading-6 capitalize
     }
-    .h_section{
-        @apply mb-2 font-futura text-5xl font-bold tracking-wider text-stone-400 dark:text-white capitalize
-    }
     .h_section-sub{
         @apply mb-2 font-futura text-2xl font-bold tracking-wider text-stone-400 dark:text-white capitalize
     }
@@ -80,6 +78,22 @@
     }
 }
 
+.h-section{
+    display: flex;
+    align-items: center;
+}
+.h-section::before{
+    content: "";
+    display: block;
+    height: 0.05em;
+    width: calc((100vw - 1280px)/2);
+    background-color: #3c3c3c;
+}
+@media (max-width: 769px){
+    .h-section::before{
+        width: calc(2rem / 2);
+    }
+}
 .radial-variant{
         --size: 80px;
         --thickness: 3px;

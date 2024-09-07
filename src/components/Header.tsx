@@ -11,8 +11,8 @@ const Header = (props: Props) => {
         <header
             className={`
                 fixed top-2 left-1/2 -translate-x-1/2 z-50
-                w-11/12 max-w-[1200px] min-h-[5rem] px-8 py-2 rounded-full box-border
-                font-futura tracking-wider uppercase 
+                w-11/12 max-w-screen-xl min-h-[5rem] px-8 py-2 rounded-full box-border
+                tracking-wider uppercase 
                 flex justify-between items-center flex-col bg-white/80 drop-shadow-md
                 md:min-h-[4rem] md:flex-row 
                 dark:bg-stone-800/80 dark:border-gray-600
@@ -26,7 +26,7 @@ const Header = (props: Props) => {
                             viewBox="0 0 550 550"
                             className="stroke-[#4d4d4d] dark:stroke-white fill-transparent"
                         >
-                            <title>TS PORT</title>
+                            <title>TS-PORT</title>
                             <polygon
                                 points="436.46 114.61 301.24 114.61 233.62 231.72 301.24 348.82 436.46 348.82 504.07 231.72 436.46 114.61"
                                 style={{
@@ -53,8 +53,8 @@ const Header = (props: Props) => {
                             />
                         </svg>
                     </span>
-                    <span className="text-2xl text-[#4d4d4d] font-semibold dark:text-white">
-                        ts port
+                    <span className="text-xl text-[#4d4d4d] font-semibold dark:text-white tracking-tighter">
+                        ts-port
                     </span>
                 </Link>
             </h1>
