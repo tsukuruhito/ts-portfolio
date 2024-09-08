@@ -11,7 +11,7 @@ const Header = (props: Props) => {
         <header
             className={`
                 fixed top-2 left-1/2 -translate-x-1/2 z-50
-                w-11/12 max-w-screen-xl min-h-[5rem] px-8 py-2 rounded-full box-border
+                w-full max-w-screen-xl min-h-[5rem] px-8 py-2 rounded-full box-border
                 tracking-wider uppercase 
                 flex justify-between items-center flex-col bg-white/80 drop-shadow-md
                 md:min-h-[4rem] md:flex-row 

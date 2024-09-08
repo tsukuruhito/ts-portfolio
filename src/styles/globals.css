@@ -86,21 +86,11 @@
     content: "";
     display: block;
     height: 0.05em;
-    width: calc((100vw - 1280px)/2);
+    width: calc((100% - 1280px)/2);
     background-color: #3c3c3c;
 }
 @media (max-width: 769px){
     .h-section::before{
         width: calc(2rem / 2);
-    }
-}
-.radial-variant{
-        --size: 80px;
-        --thickness: 3px;
-    }
-@media screen and (max-width:320px){
-    .radial-variant{
-        --size: 60px;
-        --thickness: 3px;
     }
 }

@@ -11,7 +11,8 @@ type Props = {
     isHeader: boolean;
     isFooter: boolean;
     isMenu: boolean;
-    children: Readonly<ReactNode>;
+    children: ReactNode;
+    modal: ReactNode;
 };
 
 export const metadata: Metadata = {
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     ],
 };
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children, modal }: Props) {
     return (
         <html lang="ja" suppressHydrationWarning>
             <head>
@@ -89,7 +90,10 @@ export default function RootLayout({ children }: Props) {
                     enableSystem
                 >
                     <Header isMenu={true} />
-                    <main className="pt-32 md:pt-24">{children}</main>
+                    <main className="pt-32 md:pt-24">
+                        {children}
+                        {modal}
+                    </main>
                     <Footer />
                 </ThemeProvider>
             </body>

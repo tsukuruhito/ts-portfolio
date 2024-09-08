@@ -41,7 +41,7 @@ function Model({
     const ref = useRef<THREE.Mesh>(null);
     const gltf = useMemo(() => useGLTF('/logo.glb'), []);
     gltf.materials[''].transparent = true;
-    gltf.materials[''].opacity = 0.1;
+    gltf.materials[''].opacity = 0.2;
     gltf.materials[''].blendColor = new THREE.Color(0xffffff);
 
     const updateScale = useCallback(() => {

@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 // import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
+import { microcms } from '@/lib';
+import type { portfolioType } from '@/types';
 
 // const KV = dynamic(() => import('@/components/Kv'), { ssr: false });
 export const metadata: Metadata = {
@@ -10,7 +12,11 @@ export const metadata: Metadata = {
     description:
         'This is my portfoio site to description my skills and show products',
 };
-const Home = () => {
+const Home = async () => {
+    const { contents }: { contents: portfolioType[] } = await microcms.get({
+        endpoint: 'portfolio',
+        queries: { fields: ['id', 'image'], limit: 3 },
+    });
     return (
         <>
             <div>
@@ -24,9 +30,10 @@ const Home = () => {
                     src="/images/about.jpg"
                     loading="eager"
                     alt=""
-                    width={640}
-                    height={320}
-                    className="rounded-lg grayscale md:max-w-[400px] md:w-[45vw] w-full"
+                    width={400}
+                    height={255}
+                    priority
+                    className="rounded-lg grayscale md:max-w-[400px] md:w-[45vw] w-full h-auto"
                 />
                 <div>
                     <h2 className="text-2xl tracking-widest font-semibold">
@@ -45,12 +52,12 @@ const Home = () => {
             </section>
             <section id="work" className="mt-32">
                 <div className="h-section">
-                    <h2 className="px-4 w-full max-w-screen-xl text-2xl tracking-widest uppercase font-semibold">
-                        PORTFOLIO
+                    <h2 className="px-4 w-full max-w-screen-xl text-2xl tracking-wider font-semibold">
+                        Portfolio
                     </h2>
                 </div>
                 <div className="px-4 max-w-screen-xl mx-auto mt-8">
-                    <ul className="grid md:grid-cols-3 gap-8 drop-shadow-md">
+                    {/* <ul className="grid md:grid-cols-3 gap-8 drop-shadow-sm">
                         <li>
                             <Link href="/works">
                                 <Image
@@ -81,6 +88,20 @@ const Home = () => {
                                 />
                             </Link>
                         </li>
+                    </ul> */}
+                    <ul className="grid md:grid-cols-3 gap-8 drop-shadow-sm">
+                        {contents.map((content) => (
+                            <li key={content.id}>
+                                <Link href={`/portfolio/${content.id}`}>
+                                    <Image
+                                        src={content.image.url}
+                                        width={480}
+                                        height={270}
+                                        alt=""
+                                    />
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </section>

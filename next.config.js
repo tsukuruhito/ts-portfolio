@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    formats: ["image/webp"],
-  },
-  transpilePackages: ['three'],
-};
+	reactStrictMode: true,
+	images: {
+		formats: ['image/webp'],
+		remotePatterns: [{ hostname: 'images.microcms-assets.io' }],
+	},
 
-module.exports = nextConfig;
+	transpilePackages: ['three'],
+}
+
+module.exports = nextConfig
