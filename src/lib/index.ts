@@ -1,4 +1,4 @@
-import { createClient, type MicroCMSImage } from 'microcms-js-sdk';
+import { createClient } from 'microcms-js-sdk';
 
 if (!process.env.SERVICE_DOMAIN || !process.env.API_KEY) {
     throw new Error('Please set SERVICE_DOMAIN and API_KEY');

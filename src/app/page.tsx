@@ -1,22 +1,16 @@
 import Kv from '@/components/Kv';
 import type { Metadata } from 'next';
-// import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Link from 'next/link';
-import { microcms } from '@/lib';
-import type { portfolioType } from '@/types';
+import { Suspense } from 'react';
+import Loading from './Loading';
+import Page from './portfolio/page';
 
-// const KV = dynamic(() => import('@/components/Kv'), { ssr: false });
 export const metadata: Metadata = {
     title: 'Ts Port',
     description:
         'This is my portfoio site to description my skills and show products',
 };
-const Home = async () => {
-    const { contents }: { contents: portfolioType[] } = await microcms.get({
-        endpoint: 'portfolio',
-        queries: { fields: ['id', 'image'], limit: 3 },
-    });
+const Home = () => {
     return (
         <>
             <div>
@@ -57,52 +51,7 @@ const Home = async () => {
                     </h2>
                 </div>
                 <div className="px-4 max-w-screen-xl mx-auto mt-8">
-                    {/* <ul className="grid md:grid-cols-3 gap-8 drop-shadow-sm">
-                        <li>
-                            <Link href="/works">
-                                <Image
-                                    src="/images/works/upu.jpg"
-                                    width={480}
-                                    height={270}
-                                    alt=""
-                                />
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/works">
-                                <Image
-                                    src="/images/works/jamjam.jpg"
-                                    width={480}
-                                    height={270}
-                                    alt=""
-                                />
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/works">
-                                <Image
-                                    src="/images/works/framer.jpg"
-                                    width={480}
-                                    height={270}
-                                    alt=""
-                                />
-                            </Link>
-                        </li>
-                    </ul> */}
-                    <ul className="grid md:grid-cols-3 gap-8 drop-shadow-sm">
-                        {contents.map((content) => (
-                            <li key={content.id}>
-                                <Link href={`/portfolio/${content.id}`}>
-                                    <Image
-                                        src={content.image.url}
-                                        width={480}
-                                        height={270}
-                                        alt=""
-                                    />
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+
                 </div>
             </section>
         </>
