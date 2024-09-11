@@ -18,7 +18,7 @@
         background-color: #fff;
         color: #3c3c3c;
         font-size: min(4vw, 1rem);
-        font-family: "adobe-caslon-pro", serif;
+        font-family: "garamond-premier-pro-display", serif;
     }
     :root.dark{
         background-color: #3c3c3c;
