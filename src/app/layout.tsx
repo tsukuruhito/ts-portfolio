@@ -4,7 +4,6 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
-import Head from 'next/head';
 
 type Props = {
     title: string;
@@ -76,12 +75,10 @@ export default function RootLayout({ children, modal }: Props) {
                     name="twitter:url"
                     content="https://ts-createport.site/"
                 />
-                <Head>
-                    <link
-                        rel="stylesheet"
-                        href="https://use.typekit.net/kwf0rbn.css"
-                    />
-                </Head>
+                <link
+                    rel="stylesheet"
+                    href="https://use.typekit.net/kwf0rbn.css"
+                />
             </head>
             <body className="bg-[#FAFAFA] dark:bg-[#3c3c3c]">
                 <ThemeProvider
