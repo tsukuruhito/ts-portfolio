@@ -2,15 +2,26 @@ import Kv from '@/components/Kv';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Suspense } from 'react';
-import Loading from './Loading';
-import Page from './portfolio/page';
+import PortfolioList from '../components/PortfolioList';
+import Loading from './loading';
+import type { ListType } from '@/types';
+import { microcms } from '@/lib';
 
 export const metadata: Metadata = {
     title: 'Ts Port',
     description:
         'This is my portfoio site to description my skills and show products',
 };
-const Home = () => {
+async function fetchList() {
+    const { contents }: { contents: ListType[] } = await microcms.get({
+        endpoint: 'portfolio',
+        queries: { fields: ['id', 'title', 'image'], limit: 3 },
+    });
+
+    return contents;
+}
+const Home = async () => {
+    const contents = await fetchList();
     return (
         <>
             <div>
@@ -51,7 +62,9 @@ const Home = () => {
                     </h2>
                 </div>
                 <div className="px-4 max-w-screen-xl mx-auto mt-8">
-
+                    <Suspense fallback={<Loading />}>
+                        <PortfolioList contents={contents} />
+                    </Suspense>
                 </div>
             </section>
         </>

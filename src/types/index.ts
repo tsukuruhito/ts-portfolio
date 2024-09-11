@@ -13,3 +13,9 @@ export type portfolioType = {
     image: MicroCMSImage;
     practice: boolean;
 };
+
+export type ListType = {
+    id: portfolioType['id'];
+    title: string;
+    image: portfolioType['image'];
+};
