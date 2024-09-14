@@ -17,7 +17,6 @@ const Portfolio = async ({ params }: PortfolioProps) => {
         endpoint: 'portfolio',
         contentId: params.title,
     });
-    console.log(params);
     return (
         <>
             <div>

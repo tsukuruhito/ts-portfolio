@@ -98,7 +98,7 @@ export default function Kv() {
         };
     }, []);
     return (
-        <div className="p-4 md:flex md:justify-center md:items-center relative">
+        <div className="p-4 md:flex md:justify-center md:items-center relative h-screen">
             <div className="absolute md:static left-4 top-1/2 -translate-y-1/2">
                 <p className="text-4xl md:text-5xl tracking-widest font-semibold">
                     TS-PORT
