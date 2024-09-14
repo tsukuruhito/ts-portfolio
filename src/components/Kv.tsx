@@ -47,7 +47,7 @@ function Model({
     const updateScale = useCallback(() => {
         if (ref.current) {
             const scale =
-                Math.min(containerSize.width, containerSize.height) * 0.8;
+                Math.min(containerSize.width, containerSize.height) * 0.7;
             ref.current.scale.set(scale, scale, scale);
         }
     }, [containerSize]);
@@ -98,19 +98,19 @@ export default function Kv() {
         };
     }, []);
     return (
-        <div className="p-4 md:flex md:justify-center md:items-center relative h-screen">
-            <div className="absolute md:static left-4 top-1/2 -translate-y-1/2">
-                <p className="text-4xl md:text-5xl tracking-widest font-semibold">
+        <div className="p-4 relative h-screen overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full text-zinc-100 leading-none tracking-widest">
+                <p className="text-[20rem] absolute top-0 left-0">
                     TS-PORT
                 </p>
-                <p className="text-lg md:text-2xl tracking-widest text-center font-thin">
+                <p className="text-[17rem] absolute bottom-0 right-0 translate-y-[30%]">
                     Life with Creative
                 </p>
             </div>
             <div
                 ref={containerRef}
                 id="canvas-container"
-                className="w-[60vw]  md:w-[450px] md:ml-0 ml-auto md:mr-0 -mr-4"
+                className="w-[70vw] md:ml-0 ml-auto md:mr-0 -mr-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 style={{ height: '100%', aspectRatio: '1/1' }}
             >
                 <Canvas flat linear>
@@ -118,7 +118,7 @@ export default function Kv() {
                     <ambientLight intensity={10} color="#fcfcfc" />
                     <OrthographicCamera
                         makeDefault
-                        position={[0, 0, 50]}
+                        position={[0, 0, 150]}
                         zoom={5}
                     />
                     <Suspense fallback={<CanvasLoader />}>
