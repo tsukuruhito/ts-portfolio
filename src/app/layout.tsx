@@ -87,7 +87,7 @@ export default function RootLayout({ children, modal }: Props) {
                     enableSystem
                 >
                     <Header isMenu={true} />
-                    <main className="pt-32 md:pt-24">
+                    <main>
                         {children}
                         {modal}
                     </main>
