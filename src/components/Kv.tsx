@@ -11,6 +11,7 @@ import {
 } from 'react';
 import * as THREE from 'three';
 import CanvasLoader from './CanvasLoader';
+import { useTheme } from 'next-themes';
 
 function Light() {
     const dirLight = useRef<THREE.DirectionalLight>(null);
@@ -35,8 +36,9 @@ function Light() {
 const vertexShader = `
 varying vec3 vNormal;
 varying vec3 vPosition;
+varying vec2 vUv;
 uniform float distortion;
-uniform float maxDistortion;
+float maxDistortion = 0.0;
 
 void main() {
     vNormal = normal;
@@ -44,7 +46,6 @@ void main() {
     vec3 distortedPosition = position + normal * distortion * 0.5;
 
     distortedPosition = position + clamp(distortedPosition - position, -maxDistortion, maxDistortion);
-
     vPosition = distortedPosition;
 
     gl_Position = projectionMatrix * modelViewMatrix * vec4(distortedPosition, 1.0);
@@ -54,12 +55,20 @@ void main() {
 const fragmentShader = `
 varying vec3 vNormal;
 varying vec3 vPosition;
+varying vec2 vUv;
 uniform float scrollY;
+uniform bool isDarkMode;
 
 void main() {
-    vec3 baseColor = vec3(0.9); // 白に近いグレー
+    vec3 baseColor;
     float opacity = 0.3;
     vec3 color;
+
+    if (isDarkMode) {
+        baseColor = vec3(0.2);
+    } else {
+        baseColor = vec3(0.9);
+    }
 
     color = baseColor;
 
@@ -74,6 +83,7 @@ function Model({
 }) {
     const ref = useRef<THREE.Mesh>(null);
     const gltf = useMemo(() => useGLTF('/logo.glb'), []);
+    const { resolvedTheme } = useTheme();
 
     const shaderMaterial = useMemo(
         () =>
@@ -82,13 +92,15 @@ function Model({
                 fragmentShader,
                 uniforms: {
                     distortion: { value: 0.0 },
-                    maxDistortion: { value: 0.5 },
                     scrollY: { value: 0.0 },
+                    isDarkMode: {
+                        value: resolvedTheme === 'dark',
+                    },
                 },
                 side: THREE.DoubleSide,
                 transparent: true,
             }),
-        []
+        [resolvedTheme]
     );
 
     useEffect(() => {
@@ -181,12 +193,12 @@ export default function Kv() {
         };
     }, []);
     return (
-        <div className="p-4 relative h-screen md:max-h-none max-h-[130vw] overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full text-zinc-200/40 leading-none tracking-widest">
-                <p className="text-[20vw] md:text-[13vw] absolute top-[5vw] md:top-0 left-0">
+        <div className="p-4 relative h-screen overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full text-zinc-200/40 dark:text-zinc-600/40 leading-none tracking-widest">
+                <p className="text-[30vw] md:text-[13vw] absolute top-[5vw] md:top-0 left-0">
                     TS-PORT
                 </p>
-                <p className="text-[20vw] md:text-[13vw] absolute bottom-0 right-0 text-right md:translate-y-[30%]">
+                <p className="text-[30vw] md:text-[13vw] absolute bottom-0 right-0 text-right md:translate-y-[30%]">
                     <span className="block md:inline">Life</span>{' '}
                     <span className="text-[10vw]">with</span> Creative
                 </p>
