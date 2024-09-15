@@ -18,4 +18,5 @@ export type ListType = {
     id: portfolioType['id'];
     title: string;
     image: portfolioType['image'];
+    practice: boolean;
 };
