@@ -1,9 +1,6 @@
 import Kv from '@/components/Kv';
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import { Suspense } from 'react';
 import PortfolioList from '../components/PortfolioList';
-// import Loading from './loading';
 import type { ListType } from '@/types';
 import { microcms } from '@/lib';
 
@@ -15,9 +12,8 @@ export const metadata: Metadata = {
 async function fetchList() {
     const { contents }: { contents: ListType[] } = await microcms.get({
         endpoint: 'portfolio',
-        queries: { fields: ['id', 'title', 'image'], limit: 3 },
+        queries: { fields: ['id', 'title', 'image', 'practice'], limit: 4 },
     });
-
     return contents;
 }
 const Home = async () => {
@@ -25,7 +21,7 @@ const Home = async () => {
     return (
         <>
             <Kv />
-            <div className='relative z-10'>
+            <div className="relative z-10">
                 <section
                     id="about"
                     className="mt-24 mx-auto px-4 max-w-screen-xl box-border"
@@ -52,7 +48,6 @@ const Home = async () => {
                         </h2>
                     </div>
                     <div className="px-4 max-w-screen-xl mx-auto mt-8">
-                        {/* <Suspense fallback={<Loading />}></Suspense> */}
                         <PortfolioList contents={contents} />
                     </div>
                 </section>
