@@ -25,36 +25,38 @@ const Home = async () => {
     return (
         <>
             <Kv />
-            <section
-                id="about"
-                className="mt-24 mx-auto px-4 max-w-screen-xl box-border"
-            >
-                <div>
-                    <h2 className="text-4xl tracking-widest font-semibold">
-                        About Me.
-                    </h2>
-                    <p className="text-base tracking-wide leading-8 mt-2">
-                        『Life with Creative』
-                        <span className="inline-block">
-                            大切なものを、もっと素敵なかたちでお届けする。そんなクリエイティブをしていきたい。
-                        </span>
-                        <span className="inline-block">
-                            そのために、デザインだけでなく、パフォーマンスにも心を配り、質の高い制作を目指していきます。
-                        </span>
-                    </p>
-                </div>
-            </section>
-            <section id="work" className="mt-32">
-                <div className="h-section">
-                    <h2 className="px-4 w-full max-w-screen-xl text-4xl tracking-wider font-semibold">
-                        Portfolio
-                    </h2>
-                </div>
-                <div className="px-4 max-w-screen-xl mx-auto mt-8">
-                    {/* <Suspense fallback={<Loading />}></Suspense> */}
-                    <PortfolioList contents={contents} />
-                </div>
-            </section>
+            <div className='relative z-10'>
+                <section
+                    id="about"
+                    className="mt-24 mx-auto px-4 max-w-screen-xl box-border"
+                >
+                    <div>
+                        <h2 className="text-4xl tracking-widest font-semibold">
+                            About Me.
+                        </h2>
+                        <p className="text-base tracking-wide leading-8 mt-2">
+                            『Life with Creative』
+                            <span className="inline-block">
+                                大切なものを、もっと素敵なかたちでお届けする。そんなクリエイティブをしていきたい。
+                            </span>
+                            <span className="inline-block">
+                                そのために、デザインだけでなく、パフォーマンスにも心を配り、質の高い制作を目指していきます。
+                            </span>
+                        </p>
+                    </div>
+                </section>
+                <section id="work" className="mt-32">
+                    <div className="h-section">
+                        <h2 className="px-4 w-full max-w-screen-xl text-4xl tracking-wider font-semibold">
+                            Portfolio
+                        </h2>
+                    </div>
+                    <div className="px-4 max-w-screen-xl mx-auto mt-8">
+                        {/* <Suspense fallback={<Loading />}></Suspense> */}
+                        <PortfolioList contents={contents} />
+                    </div>
+                </section>
+            </div>
         </>
     );
 };
