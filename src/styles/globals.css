@@ -2,17 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.defaultLink{
-    @apply relative
-    before:[content:""] before:opacity-0 before:absolute before:bottom-0 before:w-full before:h-[1px] before:block before:left-0 before:bg-white ease-in-out duration-150 hover:ease-in-out before:duration-200;
-}
-.defaultLink::before{
-    clip-path: inset(0 50% 0 50%);
-}
-.defaultLink:hover::before{
-    clip-path: inset(0 0 0 0);
-    opacity:1;
-}
 @layer base{
     :root{
         background-color: #fff;
@@ -32,65 +21,23 @@
 }
 
 @layer components{
-    .font-futura{
-        font-family: futura-pt, sans-serif;
-        font-weight: 500;
-        font-style: normal;
+    .h-section{
+        display: flex;
+        align-items: center;
     }
-    .font-rodin{
-        font-family: fot-rodin-pron,sans-serif;
-        font-weight: 600;
-        font-style: normal;
-    }
-    .section_title{
-        @apply font-futura text-left text-5xl font-bold tracking-wider text-stone-500 dark:text-white relative z-20
-        before:text-stone-200 before:drop-shadow-sm before:absolute before:-z-10 before:top-1 before:left-1
-        dark:before:text-stone-400/40
-    }
-    .metricsBox{
-        @apply font-rodin text-base my-8 box-border relative
-        w-full self-center sm:self-auto break-words
-    }
-    .lower_page{
-        @apply pt-32 pb-10 px-4 md:px-8 relative max-w-5xl mx-auto text-zinc-600 dark:text-white font-rodin box-border text-base leading-6 capitalize
-    }
-    .h_section-sub{
-        @apply mb-2 font-futura text-2xl font-bold tracking-wider text-stone-400 dark:text-white capitalize
-    }
-    .top_link{
-        @apply pr-3 relative;
-    }
-    .top_link::before{
-        content: "";
-        @apply inline-block h-2 w-2 absolute right-0 top-1/2 -translate-y-1/2 border-t-2 border-r-2 rotate-45;
-    }
-    .skill_box{
-        @apply relative w-full h-full mt-4 grid grid-cols-3 md:grid-cols-4 gap-4 border-[1px] p-4 border-stone-400 dark:border-white bg-stone-100 dark:bg-stone-800
-        before:content-[""] before:absolute before:block before:w-full before:h-full before:right-1 before:bottom-1 before:border-stone-400 before:border-[1px] before:dark:border-white before:z-10
-        after:content-["etc..."] after:absolute after:-bottom-5 after:right-0 after:text-xs
-    }
-    .skill_item{
-        @apply pl-4 relative
-    }
-    .skill_item::before{
-        content: "";
-        @apply inline-block h-2 w-2 border-2 border-stone-600 dark:border-white absolute left-0 top-1/2 -translate-y-1/2;
-    }
-}
-
-.h-section{
-    display: flex;
-    align-items: center;
-}
-.h-section::before{
-    content: "";
-    display: block;
-    height: 0.05em;
-    width: calc((100% - 1280px)/2);
-    background-color: #3c3c3c;
-}
-@media (max-width: 769px){
     .h-section::before{
-        width: calc(2rem / 2);
+        content: "";
+        display: block;
+        height: 0.05em;
+        width: calc((100% - 1280px)/2);
+        background-color: #3c3c3c;
+    }
+    @media (max-width: 769px){
+        .h-section::before{
+            width: calc(2rem / 2);
+        }
+        :root.dark .h-section::before{
+            background-color: #fff;
+        }
     }
 }
