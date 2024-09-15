@@ -34,8 +34,22 @@ function Light() {
     );
 }
 const vertexShader = `
+varying vec3 vNormal;
+varying vec3 vPosition;
+uniform float distortion;
+uniform float maxDistortion;
+
 void main() {
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    vNormal = normal;
+
+    vec3 distortedPosition = position + normal * distortion * 0.5;
+
+    distortedPosition = position + clamp(distortedPosition - position, -maxDistortion, maxDistortion);
+
+
+    vPosition = distortedPosition;
+
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(distortedPosition, 1.0);
 }
 `;
 
@@ -52,7 +66,7 @@ void main() {
     vec3 color;
 
     if (isDarkMode) {
-        baseColor = vec3(0.2);
+        baseColor = vec3(0.3);
     } else {
         baseColor = vec3(0.9);
     }
@@ -79,6 +93,7 @@ function Model({
                 fragmentShader,
                 uniforms: {
                     distortion: { value: 0.0 },
+                    maxDistortion: { value: 0.25 },
                     scrollY: { value: 0.0 },
                     isDarkMode: {
                         value: resolvedTheme === 'dark',
@@ -116,9 +131,34 @@ function Model({
 
     useFrame(() => {
         if (ref.current) {
-            ref.current.rotation.y -= 0.0015;
+            ref.current.rotation.y -= 0.001;
         }
     });
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (ref.current) {
+                const scrollY = window.scrollY;
+                const distortion = scrollY * 0.001;
+                if (
+                    ref.current &&
+                    ref.current.material instanceof THREE.ShaderMaterial
+                ) {
+                    (
+                        ref.current.material as THREE.ShaderMaterial
+                    ).uniforms.distortion.value = distortion;
+                    (
+                        ref.current.material as THREE.ShaderMaterial
+                    ).uniforms.scrollY.value = scrollY;
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <mesh ref={ref} material={shaderMaterial} rotation={[0.25, 0, 0]}>
@@ -126,7 +166,6 @@ function Model({
         </mesh>
     );
 }
-
 
 export default function Kv() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -157,11 +196,11 @@ export default function Kv() {
     return (
         <>
             <div className="p-4 relative h-screen overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-full text-zinc-200/40 dark:text-zinc-600/40 leading-none tracking-widest">
-                    <p className="text-[30vw] md:text-[13vw] absolute top-[5vw] md:top-0 left-0">
+                <div className="absolute top-0 left-0 w-full h-full text-zinc-200/40 dark:text-zinc-400/40 leading-none tracking-widest">
+                    <p className="text-[23vw] sm:text-[20vw] md:text-[13vw] absolute top-[5vw] md:top-0 left-2">
                         TS-PORT
                     </p>
-                    <p className="text-[30vw] md:text-[13vw] absolute bottom-0 right-0 text-right md:translate-y-[30%]">
+                    <p className="text-[23vw] sm:text-[20vw] md:text-[13vw] absolute bottom-0 right-2 text-right md:translate-y-[30%]">
                         <span className="block md:inline">Life</span>{' '}
                         <span className="text-[10vw]">with</span> Creative
                     </p>
@@ -171,7 +210,7 @@ export default function Kv() {
                 ref={containerRef}
                 id="canvas-container"
                 className="md:ml-0 ml-auto md:mr-0 -mr-4 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                style={{ width: '100%', height: '100%' }}
+                style={{ width: '100%', height: '100svh' }}
             >
                 <Canvas flat linear>
                     <Light />
