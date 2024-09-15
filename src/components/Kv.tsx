@@ -34,21 +34,8 @@ function Light() {
     );
 }
 const vertexShader = `
-varying vec3 vNormal;
-varying vec3 vPosition;
-varying vec2 vUv;
-uniform float distortion;
-float maxDistortion = 0.0;
-
 void main() {
-    vNormal = normal;
-
-    vec3 distortedPosition = position + normal * distortion * 0.5;
-
-    distortedPosition = position + clamp(distortedPosition - position, -maxDistortion, maxDistortion);
-    vPosition = distortedPosition;
-
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(distortedPosition, 1.0);
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }
 `;
 
@@ -132,31 +119,6 @@ function Model({
             ref.current.rotation.y -= 0.0015;
         }
     });
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (ref.current) {
-                const scrollY = window.scrollY;
-                const distortion = scrollY * 0.001;
-                if (
-                    ref.current &&
-                    ref.current.material instanceof THREE.ShaderMaterial
-                ) {
-                    (
-                        ref.current.material as THREE.ShaderMaterial
-                    ).uniforms.distortion.value = distortion;
-                    (
-                        ref.current.material as THREE.ShaderMaterial
-                    ).uniforms.scrollY.value = scrollY;
-                }
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
     return (
         <mesh ref={ref} material={shaderMaterial} rotation={[0.25, 0, 0]}>
