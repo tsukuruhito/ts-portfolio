@@ -1,12 +1,30 @@
 'use client';
 import Link from 'next/link';
 import Theme from './Theme';
+import { useState, useEffect } from 'react';
 
 type Props = {
     isMenu: boolean;
 };
 const Header = (props: Props) => {
     const { isMenu } = props;
+    const [showHeader, setShowHeader] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 100) {
+                setShowHeader(true);
+            } else {
+                setShowHeader(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <header
             className={`
@@ -16,6 +34,8 @@ const Header = (props: Props) => {
                 flex justify-between items-center flex-col bg-white/80 drop-shadow-md
                 md:min-h-[4rem] md:flex-row 
                 dark:bg-stone-800/80 dark:border-gray-600
+                transition-all duration-300 ease-in-out
+                ${showHeader ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
             `}
         >
             <h1 className="cursor-pointer">
