@@ -116,7 +116,6 @@ const Header = () => {
                     <Link
                         href="/portfolio"
                         className="inline-block p-2 defaultLink dark:text-white"
-                        onClick={(e) => handleScroll(e)}
                     >
                         portfolio
                     </Link>
