@@ -13,9 +13,10 @@ export async function generateMetadata({ params }: PortfolioProps) {
         endpoint: 'portfolio',
         contentId: params.title,
     });
+    const content = contents[0];
     return {
-        title: `TS Port | ${contents[0].title}`,
-        description: contents[0].description,
+        title: `TS Port | ${content.title}`,
+        description: content.description,
     };
 }
 
@@ -23,7 +24,10 @@ const Portfolio = async ({ params }: PortfolioProps) => {
     const { contents }: { contents: portfolioType[] } = await microcms.get({
         endpoint: 'portfolio',
         contentId: params.title,
+        queries: { fields: ['id', 'title', 'image', 'description', 'period', 'stack', 'link', 'practice'] },
     });
+
+    const content = contents[0];
     return (
         <div className="pt-32 min-h-svh">
             <p className="px-4 w-full max-w-screen-xl mx-auto mb-10">
@@ -50,45 +54,46 @@ const Portfolio = async ({ params }: PortfolioProps) => {
                 </Link>
             </p>
             <div className="h-section">
-                <h2>{contents[0].title}</h2>
+                <h2>{content.title}</h2>
             </div>
             <div className="px-4 max-w-screen-xl mx-auto mt-4">
                 <div className="grid place-items-center md:grid-cols-[minmax(auto,_40%)_minmax(auto,_1fr)] gap-8">
                     <figure className="rounded-md border-[0.15rem] self-center">
                         <Image
-                            src={contents[0].image.url}
+                            src={content.image.url}
                             width={480}
                             height={270}
-                            alt={contents[0].title}
+                            alt={content.title}
                         />
                     </figure>
                     <div>
                         <p className="inline-block text-sm tracking-wider leading-none bg-gray-500/60 text-white py-1 px-2 rounded-full shadow-sm shadow-gray-500">
-                            {contents[0].practice ? 'Practice' : 'Work'}
+                            {content.practice ? 'Practice' : 'Work'}
                         </p>
-                        <p className="mt-2">{contents[0].description}</p>
-                        <dl className="mt-4">
-                            <dt className="mb-1">
-                                <span className="text-sm">Stack</span>
-                            </dt>
+                        <dl className='grid grid-cols-[auto,_1fr] gap-y-2 gap-x-4 mt-2'>
+                            <dt className="text-sm">概要</dt>
+                            <dd>
+                                <p>{content.description}</p>
+                            </dd>
+                            <dt className='text-sm self-center'>制作期間</dt>
+                            <dt>{content.period}</dt>
+                            <dt className="text-sm self-center">Stack</dt>
                             <dd>
                                 <ul className="flex flex-wrap gap-2">
-                                    {contents[0].stack
-                                        .split(',')
-                                        .map((stack) => (
-                                            <li
-                                                className="text-sm inline-block leading-none pt-1.5 py-1 px-1 border rounded-sm"
-                                                key={stack}
-                                            >
-                                                {stack}
-                                            </li>
-                                        ))}
+                                    {content.stack.split(',').map((stack) => (
+                                        <li
+                                            className="text-sm inline-block leading-none pt-1.5 py-1 px-1 border rounded-sm"
+                                            key={stack}
+                                        >
+                                            {stack}
+                                        </li>
+                                    ))}
                                 </ul>
                             </dd>
                         </dl>
                         <p className="mt-6 tracking-widest">
                             <a
-                                href={contents[0].link}
+                                href={content.link}
                                 className="inline-grid grid-cols-[1fr_auto] items-center gap-1 text-center w-full px-2 py-2 bg-[#3c3c3c]/50 dark:bg-white/80 text-white dark:text-[#3c3c3c] rounded-full"
                             >
                                 <span className="text-xl leading-none pt-1">

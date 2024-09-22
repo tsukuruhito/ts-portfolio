@@ -1,8 +1,9 @@
 import Kv from '@/components/Kv';
 import type { Metadata } from 'next';
-import PortfolioList from '../components/PortfolioList';
 import type { ListType } from '@/types';
 import { microcms } from '@/lib';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
     title: 'Ts Port',
@@ -46,7 +47,27 @@ const Home = async () => {
                         </h2>
                     </div>
                     <div className="px-4 max-w-screen-xl mx-auto mt-8">
-                        <PortfolioList contents={contents} />
+                        <ul className="grid sm:flex sm:flex-wrap md:grid md:grid-cols-2 justify-center gap-8 drop-shadow-md w-fit mx-auto">
+                            {contents.map((content) => (
+                                <li key={content.id} className="relative w-fit ">
+                                    <p className="text-sm tracking-wider leading-none absolute right-1 top-2 bg-gray-500/60 text-white py-1 px-2 rounded-full shadow-sm shadow-gray-500">
+                                        {content.practice ? 'Practice' : 'Work'}
+                                    </p>
+                                    <Link
+                                        href={`/portfolio/${content.id}`}
+                                        scroll={false}
+                                        prefetch
+                                    >
+                                        <Image
+                                            src={content.image.url}
+                                            width={480}
+                                            height={270}
+                                            alt={content.title}
+                                        />
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </section>
             </div>

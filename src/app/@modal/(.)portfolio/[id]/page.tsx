@@ -10,7 +10,7 @@ type PortfolioProps = {
 const Portfolio = async ({ params }: PortfolioProps) => {
     const { contents }: { contents: portfolioType[] } = await microcms.get({
         endpoint: 'portfolio',
-        queries: { ids: params.id },
+        queries: { ids: params.id, fields: ['id', 'title', 'image', 'description', 'period', 'stack', 'link'] },
     });
     const content = contents[0];
     return (
@@ -28,11 +28,14 @@ const Portfolio = async ({ params }: PortfolioProps) => {
                     <h2 className="text-2xl font-bold pb-1 border-b-[0.15rem] border-dashed">
                         {content.title}
                     </h2>
-                    <p className="mt-2">{content.description}</p>
-                    <dl className="mt-4">
-                        <dt className="mb-1">
-                            <span className="text-sm">Stack</span>
-                        </dt>
+                    <dl className="mt-2 grid grid-cols-[auto,_1fr] gap-y-2 gap-x-4">
+                        <dt className='text-sm'>概要</dt>
+                        <dd>
+                            <p>{content.description}</p>
+                        </dd>
+                        <dt className='text-sm self-center'>制作期間</dt>
+                        <dt>{content.period}</dt>
+                        <dt className='text-sm self-center'>Stack</dt>
                         <dd>
                             <ul className="flex flex-wrap gap-2">
                                 {content.stack.split(',').map((stack) => (

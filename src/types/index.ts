@@ -8,6 +8,7 @@ export type portfolioType = {
     revisedAt: string;
     title: string;
     description: string;
+    period: string;
     stack: string;
     link: string;
     image: MicroCMSImage;
