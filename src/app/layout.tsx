@@ -86,7 +86,7 @@ export default function RootLayout({ children, modal }: Props) {
                     defaultTheme="ecosystem"
                     enableSystem
                 >
-                    <Header isMenu={true} />
+                    <Header />
                     <main>
                         {children}
                         {modal}

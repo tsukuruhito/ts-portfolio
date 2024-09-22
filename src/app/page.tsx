@@ -21,15 +21,15 @@ const Home = async () => {
     return (
         <>
             <Kv />
-            <div className="relative z-10">
-                <section
-                    id="about"
-                    className="mt-24 mx-auto px-4 max-w-screen-xl box-border"
-                >
-                    <div>
-                        <h2 className="text-4xl tracking-widest font-semibold">
+            <div className="relative z-10 mt-40">
+                <section id="about">
+                    <div className="h-section">
+                        <h2>
                             About Me.
+                            <span aria-hidden="true">About Me.</span>
                         </h2>
+                    </div>
+                    <div className="mx-auto px-4 max-w-screen-xl">
                         <p className="text-base tracking-wide leading-8 mt-2">
                             『Life with Creative』
                             <span className="inline-block">
@@ -41,10 +41,10 @@ const Home = async () => {
                         </p>
                     </div>
                 </section>
-                <section id="work" className="mt-32">
+                <section id="portfolio" className="mt-40">
                     <div className="h-section">
-                        <h2 className="px-4 w-full max-w-screen-xl text-4xl tracking-wider font-semibold">
-                            Portfolio
+                        <h2>
+                            Portfolio<span aria-hidden="true">Portfolio</span>
                         </h2>
                     </div>
                     <div className="px-4 max-w-screen-xl mx-auto mt-8">

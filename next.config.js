@@ -5,7 +5,6 @@ const nextConfig = {
 		formats: ['image/webp'],
 		remotePatterns: [{ hostname: 'images.microcms-assets.io' }],
 	},
-
 	transpilePackages: ['three'],
 }
 
