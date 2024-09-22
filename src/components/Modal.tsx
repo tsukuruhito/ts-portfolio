@@ -18,7 +18,7 @@ const Modal = ({ children }: ModalProps) => {
             }`}
             open={isOpen}
         >
-            <div className="modal-box dark:bg-[#3c3c3c] md:max-w-4xl rounded-md">
+            <div className="modal-box bg-white dark:bg-[#3c3c3c] md:max-w-4xl rounded-md">
                 <form method="dialog">
                     <button
                         type="button"
