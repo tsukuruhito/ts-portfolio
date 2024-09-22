@@ -20,7 +20,7 @@ const Portfolio = async () => {
                     <li key={content.id} className="grid justify-center">
                         <Link
                             href={`/portfolio/${content.id}`}
-                            className="relative drop-shadow-sm"
+                            className="relative drop-shadow-md"
                         >
                             <Image
                                 src={content.image.url}
