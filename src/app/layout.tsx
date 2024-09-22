@@ -5,15 +5,6 @@ import Header from '../components/Header';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 
-type Props = {
-    title: string;
-    isHeader: boolean;
-    isFooter: boolean;
-    isMenu: boolean;
-    children: ReactNode;
-    modal: ReactNode;
-};
-
 export const metadata: Metadata = {
     icons: [
         {
@@ -39,7 +30,10 @@ export const metadata: Metadata = {
     ],
 };
 
-export default function RootLayout({ children, modal }: Props) {
+export default function RootLayout({ children, modal }: {
+    children: ReactNode;
+    modal?: ReactNode;
+}) {
     return (
         <html lang="ja" suppressHydrationWarning>
             <head>
