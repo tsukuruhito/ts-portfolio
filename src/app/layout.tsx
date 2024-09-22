@@ -30,10 +30,12 @@ export const metadata: Metadata = {
     ],
 };
 
-export default function RootLayout({ children, modal }: {
+interface RootLayoutProps {
     children: ReactNode;
-    modal?: ReactNode;
-}) {
+    modal: ReactNode;
+}
+
+export default function RootLayout({ children, modal }: RootLayoutProps) {
     return (
         <html lang="ja" suppressHydrationWarning>
             <head>
