@@ -31,12 +31,10 @@ const Home = async () => {
                     </div>
                     <div className="mx-auto px-4 max-w-screen-xl">
                         <p className="text-base tracking-wide leading-8 mt-2">
-                            『Life with Creative』
-                            <span className="inline-block">
-                                大切なものを、もっと素敵なかたちでお届けする。そんなクリエイティブをしていきたい。
-                            </span>
-                            <span className="inline-block">
-                                そのために、デザインだけでなく、パフォーマンスにも心を配り、質の高い制作を目指していきます。
+                            <span className="block">『Life with Creative』</span>
+                            <span>
+                                ご縁で繋がった方々の大切なものを、もっと素敵なかたちでお届けする。そんなクリエイティブをしていきたい。
+                                クリエイターとしてまだまだ未熟なわたしですが、この目的を忘れずにデザインやコーディングのスキルを磨き、日々精進しています。
                             </span>
                         </p>
                     </div>
