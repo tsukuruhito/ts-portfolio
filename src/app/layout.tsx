@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import ModelContainer from '@/components/Model';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
     icons: [
@@ -91,6 +92,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
                     </main>
                     <Footer />
                 </ThemeProvider>
+                <Analytics />
             </body>
         </html>
     );
