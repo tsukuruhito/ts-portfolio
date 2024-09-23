@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
+import ModelContainer from '@/components/Model';
 
 export const metadata: Metadata = {
     icons: [
@@ -83,6 +84,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
                     enableSystem
                 >
                     <Header />
+                    <ModelContainer />
                     <main className="pb-10">
                         {children}
                         {modal}
