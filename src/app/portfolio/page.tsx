@@ -6,7 +6,6 @@ import Link from 'next/link';
 const Portfolio = async () => {
     const { contents }: { contents: portfolioType[] } = await microcms.get({
         endpoint: 'portfolio',
-        queries: { limit: 8 },
     });
     return (
         <div className="pt-32 min-h-svh">
