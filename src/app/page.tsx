@@ -94,7 +94,7 @@ const Home = async () => {
                         </h2>
                     </div>
                     <div className="mx-auto max-w-screen-xl px-4 mt-8">
-                        <div className="grid md:grid-cols-[auto,_30%] gap-4 items-center">
+                        <div className="grid md:grid-cols-[auto,_20%] gap-4 items-center">
                             <div>
                                 <h3 className="inline-block text-2xl tracking-widest border-b-[0.1em] px-2">
                                     <span className="text-[1.3em]">F</span>RONT
@@ -115,10 +115,10 @@ const Home = async () => {
                             </div>
                             <IconList
                                 type="front"
-                                className="grid grid-cols-3 justify-self-center w-fit md:w-auto gap-6"
+                                className="dark:drop-shadow-[0_0_0.15em_#fff]"
                             />
                         </div>
-                        <div className="grid md:grid-cols-[auto,_30%] gap-4 items-center mt-12">
+                        <div className="grid md:grid-cols-[auto,_20%] gap-4 items-center mt-12">
                             <div>
                                 <h3 className="inline-block text-2xl tracking-widest border-b-[0.1em] px-2">
                                     <span className="text-[1.3em]">S</span>ERVER
@@ -134,10 +134,10 @@ const Home = async () => {
                             </div>
                             <IconList
                                 type="other"
-                                className="grid grid-cols-3 justify-self-center w-fit md:w-auto gap-6"
+                                className="dark:drop-shadow-[0_0_0.15em_#fff]"
                             />
                         </div>
-                        <div className="grid md:grid-cols-[auto,_30%] gap-4 items-center mt-12">
+                        <div className="grid md:grid-cols-[auto,_20%] gap-4 items-center mt-12">
                             <div>
                                 <h3 className="inline-block text-2xl tracking-widest border-b-[0.1em] px-2">
                                     <span className="text-[1.3em]">D</span>ESIGN
@@ -152,7 +152,7 @@ const Home = async () => {
                             </div>
                             <IconList
                                 type="design"
-                                className="grid grid-cols-3 justify-self-center w-fit md:w-auto gap-6"
+                                className="dark:drop-shadow-[0_0_0.15em_#fff]"
                             />
                         </div>
                     </div>

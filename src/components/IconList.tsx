@@ -120,7 +120,7 @@ const IconList = ({
 }) => {
     const size = 32;
     return (
-        <div className="icon-list">
+        <div className={`icon-list ${className}`}>
             <div className="icon-center">
                 <Image
                     src={icons[type][0].src}
