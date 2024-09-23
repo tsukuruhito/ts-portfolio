@@ -5,6 +5,7 @@ import { microcms } from '@/lib';
 import Link from 'next/link';
 import Image from 'next/image';
 import IconList from '@/components/IconList';
+import Links from '@/components/Links';
 
 export const metadata: Metadata = {
     title: 'Ts Port',
@@ -39,8 +40,10 @@ const Home = async () => {
                             <span>
                                 ご縁で繋がった方々の大切なものを、もっと素敵なかたちでお届けする。そんなクリエイティブをしていきたい。
                                 クリエイターとしてまだまだ未熟なわたしですが、この目的を忘れずにデザインやコーディングのスキルを磨き、日々精進しています。
+                                もし、わたしのスキルや経験がお役に立てることがあれば、お気軽にご相談ください。
                             </span>
                         </p>
+                        <Links />
                     </div>
                 </section>
                 <section id="portfolio" className="mt-40">
