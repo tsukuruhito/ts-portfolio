@@ -50,7 +50,7 @@ export default function Links() {
                 </li>
                 <li>
                     <a
-                        href="https://coconala.com/users/191792"
+                        href="https://coconala.com/users/3408701"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-xl inline-flex items-center gap-2"
