@@ -74,6 +74,14 @@ const Home = async () => {
                                 </li>
                             ))}
                         </ul>
+                        <div className="mt-8 text-center">
+                            <Link
+                                href="/portfolio"
+                                className="text-xl tracking-widest border-b-[0.1em] border-gray-500"
+                            >
+                                View More
+                            </Link>
+                        </div>
                     </div>
                 </section>
                 <section id="skills" className="mt-40">
