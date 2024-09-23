@@ -83,7 +83,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
                     enableSystem
                 >
                     <Header />
-                    <main>
+                    <main className="pb-10">
                         {children}
                         {modal}
                     </main>
