@@ -14,7 +14,7 @@ const Portfolio = async () => {
                     Portfolio
                 </h2>
             </div>
-            <ul className="mt-8 max-w-screen-xl mx-auto grid grid-cols-2 gap-x-4 gap-y-8 md:gap-12 w-fit px-4">
+            <ul className="mt-8 max-w-screen-xl mx-auto grid md:grid-cols-2 gap-x-4 gap-y-8 md:gap-12 w-fit px-4">
                 {contents.map((content) => (
                     <li key={content.id} className="grid justify-center">
                         <Link
