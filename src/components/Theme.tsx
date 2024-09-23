@@ -1,46 +1,128 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+'use client';
+import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 const Theme = () => {
-  const [isOn, setIsOn] = useState(false);
-  const toggleSwitch = () => {
-    setIsOn(!isOn);
-    if (!isOn) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "");
-    }
-  };
-  const spring = {
-    type: "spring",
-    stiffness: 700,
-    damping: 30,
-  };
+    const [mounted, setMounted] = useState(false);
+    const { resolvedTheme, setTheme } = useTheme();
+    const selectedStyle =
+        'text-black box-border w-6 h-6 p-1 bg-white rounded-full items-center justify-start';
+    const unSelectedStyle =
+        'text-black box-border w-6 h-6 p-1 bg-white rounded-full items-center justify-start opacity-50';
 
-  useEffect(() => {
-    if (localStorage.getItem("theme") === "dark") {
-      setIsOn(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
-  return (
-    <div
-      className={
-        isOn
-          ? "flex w-14 h-8 m-2 p-1 bg-zinc-400 rounded-full items-center justify-end"
-          : "flex w-14 h-8 m-2 p-1 bg-zinc-600 rounded-full items-center justify-start"
-      }
-      onClick={toggleSwitch}
-    >
-      <motion.div
-        className="w-6 h-6 rounded-full bg-sky-50"
-        layout
-        transition={spring}
-      />
-    </div>
-  );
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (resolvedTheme === null) {
+            setTheme('light');
+        }
+    }, [resolvedTheme, setTheme]);
+
+    return (
+        <div className="grid gap-1 grid-cols-2 ml-2 p-1 bg-zinc-400 dark:bg-zinc-600 rounded-full items-center justify-start">
+            {mounted ? (
+                <>
+                    <button
+                        type="button"
+                        className={`${
+                            resolvedTheme === 'light'
+                                ? selectedStyle
+                                : unSelectedStyle
+                        }`}
+                        onClick={() => setTheme('light')}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="size-4"
+                        >
+                            <title>Light Mode</title>
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                            />
+                        </svg>
+                    </button>
+                    <button
+                        type="button"
+                        className={`${
+                            resolvedTheme === 'dark'
+                                ? selectedStyle
+                                : unSelectedStyle
+                        }`}
+                        onClick={() => setTheme('dark')}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="size-4"
+                        >
+                            <title>Dark Mode</title>
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                            />
+                        </svg>
+                    </button>
+                </>
+            ) : (
+                <>
+                    <button
+                        type="button"
+                        className={unSelectedStyle}
+                        onClick={() => setTheme('light')}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="size-6"
+                        >
+                            <title>Light Mode</title>
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                            />
+                        </svg>
+                    </button>
+                    <button
+                        type="button"
+                        className={unSelectedStyle}
+                        onClick={() => setTheme('dark')}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="size-6"
+                        >
+                            <title>Dark Mode</title>
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                            />
+                        </svg>
+                    </button>
+                </>
+            )}
+        </div>
+    );
 };
 
 export default Theme;
