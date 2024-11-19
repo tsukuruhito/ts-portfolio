@@ -2,7 +2,12 @@ import { microcms } from '@/lib';
 import type { portfolioType } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next/types';
 
+export const metadata: Metadata = {
+    title: 'Ts Port｜Portfolio',
+    description: 'Product and practice that I have worked on.',
+};
 const Portfolio = async () => {
     const { contents }: { contents: portfolioType[] } = await microcms.get({
         endpoint: 'portfolio',
