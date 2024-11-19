@@ -195,7 +195,7 @@ export default function ModelContainer() {
         <div
             ref={containerRef}
             id="canvas-container"
-            className="md:ml-0 ml-auto md:mr-0 -mr-4 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="md:ml-0 ml-auto md:mr-0 -mr-4 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
             style={{ width: '100%', height: '100svh' }}
         >
             <Canvas flat linear>

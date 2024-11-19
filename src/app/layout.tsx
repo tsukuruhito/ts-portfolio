@@ -78,7 +78,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
                     href="https://use.typekit.net/kwf0rbn.css"
                 />
             </head>
-            <body className="bg-[#FAFAFA] dark:bg-[#3c3c3c]">
+            <body className="bg-[#FAFAFA] dark:bg-[#3c3c3c] relative z-10">
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="ecosystem"
